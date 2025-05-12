@@ -8,4 +8,32 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeActivity">
 
+    <Button
+        android:id="@+id/btnSignin_welcome"
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="472dp"
+        android:backgroundTint="@color/white"
+        android:text="Sign In"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSignUp_welcome"
+        android:layout_width="302dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#82F298"
+        android:text="   Sign UP"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignin_welcome"
+        app:layout_constraintVertical_bias="0.028" />
 </androidx.constraintlayout.widget.ConstraintLayout>
