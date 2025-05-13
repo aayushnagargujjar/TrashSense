@@ -23,7 +23,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_marginLeft="8dp"
-            app:startIconDrawable="@drawable/account_circle_24px"
+            app:startIconDrawable="@drawable/baseline_alternate_email_24"
             android:layout_height="65dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -33,27 +33,53 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/password_logn_id"
         android:layout_width="359dp"
         android:layout_height="60dp"
-        android:id="@+id/password_logn_id"
-        app:cardCornerRadius="80dp"
         android:layout_marginTop="250dp"
         android:backgroundTint="#B1DE9D"
+        app:cardCornerRadius="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            android:layout_height="65dp"
             android:layout_marginLeft="8dp"
-            app:startIconDrawable=""
-            android:layout_height="65dp">
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/lock_24px">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:hint="        Password" />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/Siginbtn"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Sign In"
+        android:backgroundTint="#7BB0E4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_logn_id" />
+
+    <TextView
+        android:id="@+id/createaccountbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="12dp"
+        android:text="New User? Create Account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Siginbtn"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

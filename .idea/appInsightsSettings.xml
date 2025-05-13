@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.trashsense" />
+                  <option name="mobileSdkAppId" value="1:281283749126:android:1acc0fb61784ef5e47ea87" />
+                  <option name="projectId" value="trashsense1" />
+                  <option name="projectNumber" value="281283749126" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

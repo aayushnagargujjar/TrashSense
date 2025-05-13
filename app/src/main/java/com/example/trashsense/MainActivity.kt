@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         vv.start()
 
         lifecycleScope.launch {
-            delay(11000)
-            val intent = Intent(this@MainActivity, HomeActivity::class.java)
+            delay(1000)
+            val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
           //  Toast.makeText(this@MainActivity, "Welcome back $email", Toast.LENGTH_SHORT).show()
             startActivity(intent)
             finish()
