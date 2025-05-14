@@ -1,5 +1,6 @@
 package com.example.trashsense
 
+import HomeFragment
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -8,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import com.example.trashsense.home.HomeFragment
+
 import com.example.trashsense.profile.Profile_Fragment
 import com.example.trashsense.upload.UploadFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView

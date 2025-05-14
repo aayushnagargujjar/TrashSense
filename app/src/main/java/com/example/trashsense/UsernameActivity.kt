@@ -28,7 +28,7 @@ import java.lang.Exception
 class UsernameActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db:FirebaseFirestore
-    private lateinit var email :String
+    private lateinit var uid :String
     private lateinit var profileImageView: ImageView
     private lateinit var uploadButton: Button
     private lateinit var usernameEditText: EditText
@@ -49,7 +49,7 @@ class UsernameActivity : AppCompatActivity() {
 
         auth =FirebaseAuth.getInstance()
         db =FirebaseFirestore.getInstance()
-        email = auth.currentUser?.uid.toString()
+        uid = auth.currentUser?.uid.toString()
         profileImageView = findViewById(R.id.profileImageView)
         uploadButton = findViewById(R.id.uploadButton)
         usernameEditText = findViewById(R.id.Username)
@@ -70,12 +70,10 @@ class UsernameActivity : AppCompatActivity() {
                 return  // IMPORTANT:  Return if init fails!
             }
         }
-
-        // Set up ActivityResultLaunchers
+        
         setupCameraResultLauncher()
         setupGalleryResultLauncher()
 
-        // Set click listeners for buttons
         findViewById<Button>(R.id.cameraButton).setOnClickListener {
             takeImageFromCamera()
         }
@@ -180,7 +178,7 @@ class UsernameActivity : AppCompatActivity() {
                                 ).show()
                             }
                             val publicId = resultData?.get("public_id") as String?
-                            val url = resultData?.get("url") as String?
+                            val url = resultData?.get("secure_url") as String?
                             val username = usernameEditText.text.toString()
 
                             val userMap = hashMapOf(
@@ -188,14 +186,14 @@ class UsernameActivity : AppCompatActivity() {
                                 "url" to url,
                                 "Username" to username
                             )
-                            db.collection("User").document(email).set(userMap).addOnSuccessListener {
+                            db.collection("User").document(uid).set(userMap).addOnSuccessListener {
                                 Toast.makeText(this@UsernameActivity,"Username and profilepic store succesfully",Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this@UsernameActivity,HomeActivity::class.java))
                             }.addOnFailureListener{
                                 Toast.makeText(this@UsernameActivity,"Username Not store in firebasefirestore ",Toast.LENGTH_SHORT).show()
                             }
 
-                            // saveUsertoFirebase(username, url)  //  Call this on the main thread if it updates UI
+
                         }
 
                         override fun onError(requestId: String, error: ErrorInfo) {

@@ -12,7 +12,7 @@
         android:id="@+id/btnSignin_welcome"
         android:layout_width="302dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="496dp"
         android:backgroundTint="@color/white"
         android:text="Sign In"
         android:textColor="@color/black"

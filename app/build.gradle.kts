@@ -55,10 +55,16 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     //cloudinar
     implementation (libs.cloudinary.android)
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
+    //Glide work seamlessly with cloudinary
+    implementation ("com.github.bumptech.glide:okhttp3-integration:4.16.0")
 }

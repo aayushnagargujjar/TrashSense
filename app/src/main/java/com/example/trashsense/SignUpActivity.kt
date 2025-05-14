@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -32,16 +33,21 @@ class SignUpActivity : AppCompatActivity() {
             insets
         }
 
-        // Initialize Firebase instances
+
         auth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        // Get references to UI elements
+
         val mail = findViewById<TextInputEditText>(R.id.gmail_signup_id)
         val passwordField = findViewById<TextInputEditText>(R.id.password_signup)
         val repasswordField = findViewById<TextInputEditText>(R.id.repassword_signup)
         val signupBtn = findViewById<Button>(R.id.signup_btn)
+        val already_acc= findViewById<TextView>(R.id.already_acc_btn)
+
+        already_acc.setOnClickListener{
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
 
         signupBtn.setOnClickListener {
             val emailText = mail.text?.toString()?.trim() ?: ""

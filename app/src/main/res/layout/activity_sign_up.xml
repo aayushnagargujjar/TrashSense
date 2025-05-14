@@ -3,119 +3,113 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/signup_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/signup_bg"
+    android:padding="24dp"
     tools:context=".SignUpActivity">
 
-    <!-- Email Input -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="359dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="80dp"
-        android:backgroundTint="#B1DE9D"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="     Email"
+        app:startIconDrawable="@drawable/baseline_alternate_email_24"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxBackgroundColor="#B1DE9D"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginLeft="8dp"
-            app:startIconDrawable="@drawable/baseline_alternate_email_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:id="@+id/gmail_signup_id"
-                android:layout_height="wrap_content"
-                android:hint="      Email" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Password Input -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="359dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="155dp"
-        android:backgroundTint="#B1DE9D"
-        app:cardCornerRadius="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintWidth_percent="0.9"
+        android:layout_marginTop="354dp">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/gmail_signup_id"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginLeft="8dp"
-            app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/lock_24px">
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/password_signup"
-                android:hint="      Password" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </androidx.cardview.widget.CardView>
 
-    <!-- Re-enter Password Input -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="359dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="290dp"
-        android:backgroundTint="#B1DE9D"
-        app:cardCornerRadius="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="     Password"
+        app:startIconDrawable="@drawable/lock_24px"
+        app:endIconMode="password_toggle"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxBackgroundColor="#B1DE9D"
+        app:layout_constraintTop_toBottomOf="@id/emailInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintWidth_percent="0.9"
+        android:layout_marginTop="24dp">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_signup"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginLeft="8dp"
-            app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/lock_24px">
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/repassword_signup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="      Re-enter Password" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </androidx.cardview.widget.CardView>
 
-    <!-- Sign Up Button -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/repasswordInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="     Re-enter Password"
+        app:startIconDrawable="@drawable/lock_24px"
+        app:endIconMode="password_toggle"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxBackgroundColor="#B1DE9D"
+        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9"
+        android:layout_marginTop="24dp">
 
-    <!-- Already Have an Account? -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/repassword_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/signup_btn"
-        android:layout_width="190dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#7BB0E4"
         android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+        app:layout_constraintTop_toBottomOf="@id/repasswordInputLayout"
+        app:layout_constraintWidth_percent="0.5" />
 
     <TextView
-        android:id="@+id/createaccountbtn"
+        android:id="@+id/already_acc_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="12dp"
+        android:layout_marginTop="56dp"
         android:text="Already have an account? Sign In"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#A63456"
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_btn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/signup_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,10 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var auth:FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,19 +26,28 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+          auth  = FirebaseAuth.getInstance()
         var vv =findViewById<VideoView>(R.id.videoView)
         val videoPath = "android.resource://" + packageName + "/" + R.raw.trashsense_intro
         vv.setVideoURI(Uri.parse(videoPath))
         vv.start()
-
-        lifecycleScope.launch {
-            delay(1000)
-            val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
-          //  Toast.makeText(this@MainActivity, "Welcome back $email", Toast.LENGTH_SHORT).show()
-            startActivity(intent)
-            finish()
-        }
-
+     if (auth.currentUser == null) {
+         lifecycleScope.launch {
+             delay(1000)
+             val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
+             //  Toast.makeText(this@MainActivity, "Welcome back $email", Toast.LENGTH_SHORT).show()
+             startActivity(intent)
+             finish()
+         }
+     }
+        else{
+         lifecycleScope.launch {
+             delay(1000)
+             val intent = Intent(this@MainActivity, HomeActivity::class.java)
+             Toast.makeText(this@MainActivity, "Welcome back ${auth.currentUser!!.email}", Toast.LENGTH_SHORT).show()
+             startActivity(intent)
+             finish()
+         }
+     }
     }
     }
