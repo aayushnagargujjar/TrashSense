@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
+import com.example.trashsense.Question.Question1
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.io.IOException
@@ -188,7 +189,7 @@ class UsernameActivity : AppCompatActivity() {
                             )
                             db.collection("User").document(uid).set(userMap).addOnSuccessListener {
                                 Toast.makeText(this@UsernameActivity,"Username and profilepic store succesfully",Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this@UsernameActivity,HomeActivity::class.java))
+                                startActivity(Intent(this@UsernameActivity,Question1::class.java))
                             }.addOnFailureListener{
                                 Toast.makeText(this@UsernameActivity,"Username Not store in firebasefirestore ",Toast.LENGTH_SHORT).show()
                             }

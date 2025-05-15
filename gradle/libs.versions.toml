@@ -1,5 +1,6 @@
 [versions]
 agp = "8.8.2"
+bubblenavigation = "1.0.7"
 cloudinaryAndroid = "2.8.0"
 kotlin = "2.1.0"
 coreKtx = "1.16.0"
@@ -11,6 +12,8 @@ kotlinUrlGen = "1.7.0"
 material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
+meowBottomNavigation = "1.3.1"
+meowbottomnavigationVersion = "Tag"
 playServicesCastTv = "21.1.1"
 runner = "1.6.1"
 googleGmsGoogleServices = "4.4.2"
@@ -21,6 +24,7 @@ recyclerview = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+bubblenavigation = { module = "com.gauravk.bubblenavigation:bubblenavigation", version.ref = "bubblenavigation" }
 cloudinary-android = { module = "com.cloudinary:cloudinary-android", version.ref = "cloudinaryAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -30,6 +34,8 @@ kotlin-url-gen = { module = "com.cloudinary:kotlin-url-gen", version.ref = "kotl
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+meow-bottom-navigation = { module = "com.etebarian:meow-bottom-navigation", version.ref = "meowBottomNavigation" }
+meowbottomnavigation = { module = "com.github.oneHamidreza:MeowBottomNavigation", version.ref = "meowbottomnavigationVersion" }
 play-services-cast-tv = { group = "com.google.android.gms", name = "play-services-cast-tv", version.ref = "playServicesCastTv" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }

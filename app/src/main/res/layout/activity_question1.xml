@@ -1,0 +1,49 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What are your top sustainability interests?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp"/>
+
+    <CheckBox
+        android:id="@+id/optionGardening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gardening 🌱"/>
+
+    <CheckBox
+        android:id="@+id/optionVegan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vegan lifestyle 🌿"/>
+
+    <CheckBox
+        android:id="@+id/optionTransport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clean transport 🚲"/>
+
+    <CheckBox
+        android:id="@+id/optionWaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zero waste ♻️"/>
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next ➡️"
+        android:layout_marginTop="24dp"/>
+</LinearLayout>

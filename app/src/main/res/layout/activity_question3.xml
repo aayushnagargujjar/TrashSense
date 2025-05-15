@@ -1,0 +1,41 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What are your sustainability goals?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp"/>
+
+    <CheckBox
+        android:id="@+id/goalPlastic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reduce plastic 🚯" />
+
+    <CheckBox
+        android:id="@+id/goalEnergy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save energy 🔋" />
+
+    <CheckBox
+        android:id="@+id/goalCarbon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lower carbon emissions 🛻" />
+
+    <Button
+        android:id="@+id/btnShowResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Recommendations ✅"
+        android:layout_marginTop="24dp"/>
+</LinearLayout>

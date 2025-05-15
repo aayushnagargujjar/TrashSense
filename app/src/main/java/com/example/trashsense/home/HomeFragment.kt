@@ -2,6 +2,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,12 +19,14 @@ class HomeFragment : Fragment() {
     private lateinit var postData: ArrayList<Post_Data>
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PostAdapter
+    private lateinit var Ecotextview : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         postData = ArrayList()
+
     }
 
     override fun onCreateView(
@@ -35,10 +38,30 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = PostAdapter(postData)
         recyclerView.adapter = adapter
-
+        Ecotextview =view.findViewById(R.id.topEcoActionsText)
         loadPosts()
+        loadEcotext()
 
         return view
+    }
+
+
+    private fun loadEcotext(){
+        val userId =auth.currentUser?.uid.toString()
+        db.collection("User").document(userId).get().addOnSuccessListener { document ->
+            val ecoActionsList = document.get("ecoActions") as? List<String>
+
+            val ecotext = if (ecoActionsList != null) {
+                ecoActionsList.joinToString("\n")
+            } else {
+                "Top Eco Actions for You:\n- Install LED bulbs — Save energy at home\n" +
+                        "- Compost kitchen waste — Great for gardeners\n" +
+                        "- Switch to bamboo toothbrush — Zero-waste starter"
+            }
+
+            Ecotextview.text = ecotext
+        }
+
     }
 
     private fun loadPosts() {
