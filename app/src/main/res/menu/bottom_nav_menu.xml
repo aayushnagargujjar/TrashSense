@@ -5,27 +5,31 @@
     <item
         android:id="@+id/navigation_home"
         android:actionLayout="@layout/fragment_home"
-        android:icon="@drawable/home_icon_24px"
-
-        android:title="" />
-    <item android:title="free"
-
+        android:icon="@drawable/house"
+        android:title="Home" />
+    <item
+        android:title="Eco_AI"
+        android:icon="@drawable/eco_analysis"
+        android:id="@+id/navigation_ECo_ai"
         />
 
-    <item android:title=""
-        android:icon="@drawable/upload_24px"
+    <item
+        android:title="Upload"
+
+        android:icon="@drawable/upload"
         android:id="@+id/navigation_upload"
         />
 
-    <item android:title="Program"
+    <item android:title="Leader"
         android:icon="@drawable/event_24px"
         android:id="@+id/navigation_event"
         />
 
     <item
-        android:title=""
+        android:title="Profile"
+
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/account_circle_24px"
+        android:icon="@drawable/plant"
 
         />
 </menu>

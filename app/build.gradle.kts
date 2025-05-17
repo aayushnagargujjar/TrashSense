@@ -10,6 +10,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        mlModelBinding = true
     }
     defaultConfig {
         applicationId = "com.example.trashsense"
@@ -56,10 +57,16 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.tensorflow.lite.gpu)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
+   //Material Components dependency
+    implementation (libs.material.v1110)
     //cloudinary
     implementation (libs.cloudinary.android)
     //Glide
@@ -68,10 +75,10 @@ dependencies {
     //Glide work seamlessly with cloudinary
     implementation ("com.github.bumptech.glide:okhttp3-integration:4.16.0")
 
-    //Bottom nav bar
+   /* //Bottom nav bar
     implementation (libs.bubblenavigation)
     implementation(libs.meow.bottom.navigation)
     //for getting git project
-    implementation(libs.meowbottomnavigation)
+    implementation(libs.meowbottomnavigation)*/
 
 }

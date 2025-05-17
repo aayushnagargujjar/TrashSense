@@ -1,69 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-
     tools:context=".upload.UploadFragment">
-
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-120dp"
-            app:cardCornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/post_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
-
-            <EditText
-                android:id="@+id/Post_text"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:hint="Share your views"
-                android:padding="15dp"
-                android:textColorHint="#0D0C0C"
-                android:textSize="20sp" />
-        </androidx.cardview.widget.CardView>
-
-        <ImageView
-            android:id="@+id/post_image"
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:src="@drawable/img"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.473" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:foregroundGravity="center"
-            android:src="@drawable/upload_24px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/post_image"
-            app:layout_constraintVertical_bias="0.093" />
 
         <TextView
             android:id="@+id/textView"
@@ -72,12 +18,10 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/abril_fatface"
             android:text="    Inspire Change"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toTopOf="@+id/cardView2"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
@@ -85,14 +29,77 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/abril_fatface"
             android:text=" One Post at a Time!"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toTopOf="@+id/cardView2"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.0" />
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="@id/textView"
+            app:layout_constraintStart_toStartOf="@id/textView"
+            app:layout_constraintTop_toBottomOf="@id/textView" />
+
+
+        <ImageView
+            android:id="@+id/post_image"
+            android:layout_width="220dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="Add picture"
+            android:scaleType="centerInside"
+            android:src="@drawable/img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@null"
+            android:contentDescription="Upload"
+            android:src="@drawable/photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_image"
+            app:tint="@null" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/floatingActionButton">
+
+            <EditText
+                android:id="@+id/Post_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="@string/hint_description"
+                android:minHeight="150dp"
+                android:padding="16dp"
+                android:textColorHint="#666"
+                android:textSize="16sp" />
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#8EDE83"
+            android:text="Save activity"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </FrameLayout>

@@ -99,15 +99,15 @@ class Question3 : AppCompatActivity() {
                     ecoActions.add("Grow your own herbs — Saves water and reduces food miles")
                 }
                 "vegan" -> {
-                   // ecoActions.add("Eat more plant-based meals — Reduce greenhouse gases")
+                   ecoActions.add("Eat more plant-based meals — Reduce greenhouse gases")
                     ecoActions.add("Buy local and organic produce — Support sustainable farming")
                 }
                 "clean_transport" -> {
                     ecoActions.add("Bike or walk for short trips — Reduce carbon footprint")
-                    //ecoActions.add("Use public transport or carpool — Save fuel and money")
+                    ecoActions.add("Use public transport or carpool — Save fuel and money")
                 }
                 "zero_waste" -> {
-                    //ecoActions.add("Use reusable bags — Cut down plastic waste")
+                    ecoActions.add("Use reusable bags — Cut down plastic waste")
                     ecoActions.add("Avoid single-use plastics — Choose reusable alternatives")
                 }
             }
@@ -125,19 +125,19 @@ class Question3 : AppCompatActivity() {
             when (goal) {
                 "Home Improvement" -> {
                     ecoActions.add("Insulate your home — Save heating and cooling energy")
-                    //ecoActions.add("Install LED bulbs — Save energy at home")
+                    ecoActions.add("Install LED bulbs — Save energy at home")
                 }
                 "Shopping Habits" -> {
-                 //   ecoActions.add("Choose eco-friendly products — Support green businesses")
+                   ecoActions.add("Choose eco-friendly products — Support green businesses")
                     ecoActions.add("Switch to bamboo toothbrush — Zero-waste starter")
                 }
                 "Community" -> {
                     ecoActions.add("Organize a community bike day — Promote eco-friendly transport")
-                   // ecoActions.add("Participate in local cleanups — Make your neighborhood greener")
+                   ecoActions.add("Participate in local cleanups — Make your neighborhood greener")
                 }
             }
         }
 
-        return ecoActions.take(4).toList() // limit to .... max, unique by using set
+        return ecoActions.take(7).toList() // limit to .... max, unique by using set
     }
 }

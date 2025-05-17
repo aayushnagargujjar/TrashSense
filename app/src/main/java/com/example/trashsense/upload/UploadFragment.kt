@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -91,10 +92,12 @@ class UploadFragment : Fragment() {
         postImage = view.findViewById(R.id.post_image)
         postText = view.findViewById(R.id.Post_text)
         fab = view.findViewById(R.id.floatingActionButton)
+        fab.imageTintList = null
 
         fab.setOnClickListener {
             showImagePickerOptions()
         }
+        var savebtn =view.findViewById<Button>(R.id.saveButton)
 
 
         return view
@@ -120,7 +123,7 @@ class UploadFragment : Fragment() {
                 bitmap?.let {
                     postImage.setImageBitmap(it)
                     imageUri = saveBitmapToTempFile(it)
-                    uploadImageToCloudinary()
+
                 }
             }
         }
@@ -131,7 +134,7 @@ class UploadFragment : Fragment() {
             if (it.resultCode == Activity.RESULT_OK) {
                 imageUri = it.data?.data
                 postImage.setImageURI(imageUri)
-                uploadImageToCloudinary()
+
             }
         }
     }

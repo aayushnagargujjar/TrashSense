@@ -2,4 +2,5 @@
     <string name="app_name">Trash Sense</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_description">"  Describe your activity. Photo appreciated.\n\n\"I picked up four pieces of plastic on my 🏃\"\n\"Went to the park and picked up some litter\"\n\"Picked up 2 bags of trash at the beach 🏖️\""</string>
 </resources>

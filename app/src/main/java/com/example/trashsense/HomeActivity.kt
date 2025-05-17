@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.trashsense.AI_Eco_Dashboard.Ai_Eco_Dashboard
 
 
 import com.example.trashsense.profile.Profile_Fragment
@@ -26,9 +27,13 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
         var bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.itemIconTintList = null
+        bottomNavigationView.itemBackground = null
+
         var homeFragment =HomeFragment()
         var profilefrag =Profile_Fragment()
         var uploadfrag =UploadFragment()
+        var EcoaiFragment =Ai_Eco_Dashboard()
 
 
         setCurrentFragment(homeFragment)
@@ -57,6 +62,11 @@ class HomeActivity : AppCompatActivity() {
                   //  iconView.startAnimation(animation)
                     true
                 }
+                R.id.navigation_ECo_ai-> {
+                    setCurrentFragment(EcoaiFragment)
+                    true
+                }
+
                 else -> false
             }
         }
