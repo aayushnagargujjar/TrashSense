@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "281283749126",
+    "project_id": "trashsense1",
+    "storage_bucket": "trashsense1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281283749126:android:1acc0fb61784ef5e47ea87",
+        "android_client_info": {
+          "package_name": "com.example.trashsense"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfHXsEO_hLBF5ptoaRrdvx6Ne3QvxQvXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

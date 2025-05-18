@@ -14,10 +14,11 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Heading -->
+
         <TextView
             android:id="@+id/heading"
             android:layout_width="wrap_content"
+            android:layout_marginTop="40dp"
             android:layout_height="wrap_content"
             android:text="Transport CO₂ Calculator"
             android:textSize="24sp"
@@ -25,7 +26,7 @@
             android:textColor="#2E7D32"
             android:layout_marginBottom="24dp" />
 
-        <!-- Section: Selected Transports -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="space_between"
+            android:gravity="center"
             android:layout_marginBottom="24dp">
 
             <LinearLayout
@@ -95,11 +96,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Section: Distance Input -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter Distance"
+            android:text="Enter Distance (Km)"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#424242"
@@ -115,33 +116,13 @@
             android:padding="12dp"
             android:layout_marginBottom="8dp" />
 
-        <!-- Unit Toggle -->
-        <RadioGroup
-            android:id="@+id/unitToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="24dp">
 
-            <RadioButton
-                android:id="@+id/kmRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Km"
-                android:checked="true" />
 
-            <RadioButton
-                android:id="@+id/milesRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Miles"
-                android:layout_marginStart="16dp" />
-        </RadioGroup>
 
-        <!-- Section: Progress -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/checksaving_tBtn"
             android:text="Estimated Carbon Savings"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -158,7 +139,7 @@
             android:progressTint="#4CAF50"
             android:layout_marginBottom="24dp" />
 
-        <!-- Graph Placeholder -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

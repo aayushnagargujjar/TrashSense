@@ -13,21 +13,23 @@
         android:padding="8dp">
 
         <!-- Header Title -->
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Be Inspired by a Greener Community"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/abril_fatface"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Account/Profile Button -->
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="313dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="68dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Be Inspired by a Greener Community"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="40dp"
@@ -35,10 +37,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/account_circle_24px"
             android:contentDescription="Profile"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:src="@drawable/account_circle_24px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Eco Tips Text Block -->
 
@@ -58,7 +60,6 @@
             android:textSize="13sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -67,11 +68,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            tools:listitem="@layout/post_rview"
-            app:layout_constraintTop_toBottomOf="@id/topEcoActionsText"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/topEcoActionsText"
+            tools:listitem="@layout/post_rview" />
 
         <TextView
             android:id="@+id/textView3"
@@ -84,6 +85,18 @@
             app:layout_constraintEnd_toEndOf="@+id/topEcoActionsText"
             app:layout_constraintStart_toStartOf="@+id/topEcoActionsText"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="67dp"
+            android:layout_height="66dp"
+            android:src="@drawable/trashsense_logo"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintHorizontal_bias="0.028"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

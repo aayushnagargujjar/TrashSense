@@ -32,6 +32,10 @@ class Profile_Fragment : Fragment() {
 
         val pfImageView = view.findViewById<ImageView>(R.id.profile_pic)
         val pfUsername = view.findViewById<TextView>(R.id.pf_username)
+        val ecotext = view.findViewById<TextView>(R.id.eco_A_number)
+        val watertext = view.findViewById<TextView>(R.id.watersaved_number)
+        val co2text = view.findViewById<TextView>(R.id.co2reduced_number)
+
         val uid = auth.currentUser?.uid
 
         if (uid != null) {
@@ -41,7 +45,13 @@ class Profile_Fragment : Fragment() {
                     if (document.exists()) {
                         val username = document.getString("Username") ?: "Unknown"
                         val imageUrl = document.getString("url") ?: ""
+                        val water = document.getDouble("total_water_savings")?:0
+                        val eco = document.getDouble("Eco_Activity")?:0
+                        val co2 = document.getDouble("total_co2_savings")?:0
 
+                        watertext.text =water.toString()
+                        ecotext.text =eco.toString()
+                        co2text.text =co2.toString()
                         pfUsername.text = username
 
                         if (imageUrl.isNotEmpty()) {

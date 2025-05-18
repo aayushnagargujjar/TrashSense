@@ -52,6 +52,7 @@ class UploadFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         if (!cloudinaryInitialized) {
             val config = HashMap<String, String>().apply {
                 put("cloud_name", "dhccxvbdw")
@@ -93,11 +94,23 @@ class UploadFragment : Fragment() {
         postText = view.findViewById(R.id.Post_text)
         fab = view.findViewById(R.id.floatingActionButton)
         fab.imageTintList = null
+        val descriptiontext = arguments?.getString("descriptiontext") ?: "Default Hint"
+        val imageid = arguments?.getInt("icon_id") ?: R.drawable.img
+
+        postImage.setImageResource(imageid)
+        postText.hint = descriptiontext
+
 
         fab.setOnClickListener {
             showImagePickerOptions()
         }
-        var savebtn =view.findViewById<Button>(R.id.saveButton)
+        view.findViewById<Button>(R.id.saveButton).setOnClickListener{
+            if (postText!=null){
+            uploadImageToCloudinary()}
+            else{
+                Toast.makeText(requireContext() ,"Text is empty",Toast.LENGTH_SHORT).show()
+            }
+        }
 
 
         return view

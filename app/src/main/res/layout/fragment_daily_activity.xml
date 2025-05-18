@@ -2,203 +2,204 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:id="@+id/main"
-    android:padding="24dp">
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:orientation="vertical">
 
         <!-- Title -->
         <TextView
-            android:id="@+id/titleText"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add your activity"
+            android:textSize="24sp"
             android:layout_marginTop="40dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SELECT TRANSPORT"
             android:textStyle="bold"
-            android:textSize="22sp"
             android:textColor="#000000"
-            />
-        <TextView
-            android:id="@+id/titleText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick your real travel mode and discover your CO₂ savings!"
-            android:textSize="13sp"
-            android:textColor="#000000"
-            android:layout_marginBottom="32dp" />
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="8dp" />
 
-        <!-- Grid Layout with 6 options -->
+        <!-- Motivational Quote -->
+        <TextView
+            android:id="@+id/tv_motivation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="“Every small act makes a big impact on our planet 🌍”"
+            android:textSize="16sp"
+            android:textColor="#388E3C"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" />
+
+        <!-- Activity Grid -->
         <GridLayout
+            android:id="@+id/activity_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="2"
-            android:rowCount="3"
+            android:useDefaultMargins="true"
             android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false"
-            android:useDefaultMargins="true">
+            android:rowOrderPreserved="false">
 
-
+            <!-- Repeatable item layout -->
+            <!-- Item 1 -->
             <LinearLayout
+                android:id="@+id/DailyActivities_PickedUpTrash"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:id="@+id/realT_walk"
-                android:background="@drawable/rounded_box"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/walk"
-                    android:contentDescription="Walk" />
+                    android:src="@drawable/ic_trash"
+                    android:contentDescription="Picked up trash" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Walk"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp" />
+                    android:text="Picked up trash"
+                    android:textColor="#333"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:paddingTop="8dp" />
             </LinearLayout>
 
-
+            <!-- Item 2 -->
             <LinearLayout
+                android:id="@+id/DailyActivities_HelpedTheAnimals"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:id="@+id/realT_cycle"
-                android:background="@drawable/rounded_box"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/cycle"
-                    android:contentDescription="Cycle" />
+                    android:src="@drawable/ic_animals"
+                    android:contentDescription="Helped the animals" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cycle"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp" />
+                    android:text="Helped the animals"
+                    android:textColor="#333"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:paddingTop="8dp" />
             </LinearLayout>
 
+            <!-- Continue this pattern for the rest... -->
 
             <LinearLayout
+                android:id="@+id/DailyActivities_UpcycledRenewed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:id="@+id/realT_train"
-                android:background="@drawable/rounded_box"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_train"
-                    android:contentDescription="Train" />
+                    android:src="@drawable/ic_upcycle"
+                    android:contentDescription="Upcycled renewed" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Train"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp" />
+                    android:text="Upcycled renewed"
+                    android:textColor="#333"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:paddingTop="8dp" />
             </LinearLayout>
 
-
             <LinearLayout
+                android:id="@+id/DailyActivities_GrownOwnGroceries"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:id="@+id/realT_bus"
-                android:background="@drawable/rounded_box"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_bus"
-                    android:contentDescription="Bus" />
+                    android:src="@drawable/ic_growownngroceries"
+                    android:contentDescription="Grown own groceries" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bus"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp" />
+                    android:text="Grown own groceries"
+                    android:textColor="#333"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:paddingTop="8dp" />
             </LinearLayout>
 
-
             <LinearLayout
+                android:id="@+id/DailyActivities_BoughtOrganicProduct"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:id="@+id/realT_motorbike"
-                android:background="@drawable/rounded_box"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_motarbike"
-                    android:contentDescription="Motorbike" />
+                    android:src="@drawable/ic_organic"
+                    android:contentDescription="Bought organic product" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Motorbike"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp" />
+                    android:text="Bought organic product"
+                    android:textColor="#333"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:paddingTop="8dp" />
             </LinearLayout>
 
-
             <LinearLayout
+                android:id="@+id/DailyActivities_MyOwnEcoActivity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:id="@+id/realT_car"
-                android:background="@drawable/rounded_box"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_car"
-                    android:contentDescription="Car" />
+                    android:src="@drawable/ic_eco"
+                    android:contentDescription="My own eco activity" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Car"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp" />
+                    android:text="My own eco activity"
+                    android:textColor="#333"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:paddingTop="8dp" />
             </LinearLayout>
 
         </GridLayout>
-
     </LinearLayout>
 </ScrollView>

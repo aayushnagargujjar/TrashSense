@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ActivityItemStyle">
+        <![CDATA[<resources>     <style name="ActivityItemStyle">         <item name="android:layout_width">0dp</item>         <item name="android:layout_height">wrap_content</item>         <item name="android:layout_columnWeight">1</item>         <item name="android:orientation">vertical</item>         <item name="android:gravity">center</item>         <item name="android:padding">12dp</item>     </style>      <style name="ActivityIconStyle">         <item name="android:layout_width">48dp</item>         <item name="android:layout_height">48dp</item>     </style>      <style name="ActivityTextStyle">         <item name="android:layout_width">wrap_content</item>         <item name="android:layout_height">wrap_content</item>         <item name="android:textSize">14sp</item>         <item name="android:gravity">center</item>         <item name="android:textColor">#333333</item>         <item name="android:paddingTop">8dp</item>     </style> </resources> ]]></style>
+</resources>

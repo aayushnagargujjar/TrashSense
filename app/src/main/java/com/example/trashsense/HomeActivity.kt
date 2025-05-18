@@ -13,6 +13,7 @@ import com.example.trashsense.AI_Eco_Dashboard.Ai_Eco_Dashboard
 
 
 import com.example.trashsense.profile.Profile_Fragment
+import com.example.trashsense.upload.DailyActivity
 import com.example.trashsense.upload.UploadFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -32,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
 
         var homeFragment =HomeFragment()
         var profilefrag =Profile_Fragment()
-        var uploadfrag =UploadFragment()
+        var uploadfrag =DailyActivity()
         var EcoaiFragment =Ai_Eco_Dashboard()
 
 
