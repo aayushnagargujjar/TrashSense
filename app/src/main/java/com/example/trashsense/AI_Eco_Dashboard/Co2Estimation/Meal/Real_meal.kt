@@ -23,10 +23,9 @@ class Real_meal : Fragment() {
         ): View {
             val view = inflater.inflate(R.layout.fragment_real_meal, container, false)
 
-            // Load animation
             scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.item_click)
 
-            // Meal options
+
             val mealOptions = mapOf(
                 view.findViewById<LinearLayout>(R.id.Real_fruit) to "fruit",
                 view.findViewById<LinearLayout>(R.id.Real_vegetable) to "vegetable",

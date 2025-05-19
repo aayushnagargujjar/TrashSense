@@ -1,5 +1,6 @@
 package com.example.trashsense.AI_Eco_Dashboard.Co2Estimation.Meal
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.example.trashsense.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
 class Replace_meal : Fragment() {
 
@@ -26,6 +28,7 @@ class Replace_meal : Fragment() {
         db = FirebaseFirestore.getInstance()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,8 +84,8 @@ class Replace_meal : Fragment() {
             return
         }
 
-        val co2Saved = (realValues.first - insteadValues.first).coerceAtLeast(0)
-        val waterSaved = (realValues.second - insteadValues.second).coerceAtLeast(0f)
+        val co2Saved = (realValues.first - insteadValues.first)
+        val waterSaved = (realValues.second - insteadValues.second)
 
         val userId = auth.currentUser?.uid ?: return
         val userRef = db.collection("User").document(userId)
@@ -94,11 +97,11 @@ class Replace_meal : Fragment() {
             val updatedCO2 = existingCO2 + co2Saved
             val updatedWater = existingWater + waterSaved
 
-            userRef.update(
+            userRef.set(
                 mapOf(
                     "total_co2_savings" to updatedCO2,
                     "total_water_savings" to updatedWater
-                )
+                ), SetOptions.merge()
             ).addOnSuccessListener {
                 Toast.makeText(
                     requireContext(),

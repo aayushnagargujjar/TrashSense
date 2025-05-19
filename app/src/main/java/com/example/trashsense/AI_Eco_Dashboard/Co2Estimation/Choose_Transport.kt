@@ -22,10 +22,10 @@ class Choose_Transport : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_choose__transport, container, false)
 
-        // Load animation
+
         scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.item_click)
 
-        // Transport options
+
         val transportOptions = mapOf(
             view.findViewById<LinearLayout>(R.id.realT_walk) to "walk",
             view.findViewById<LinearLayout>(R.id.realT_cycle) to "cycle",
@@ -35,7 +35,7 @@ class Choose_Transport : Fragment() {
             view.findViewById<LinearLayout>(R.id.realT_car) to "car"
         )
 
-        // Set click listeners with animation
+
         transportOptions.forEach { (view, transportType) ->
             view.setOnClickListener {
                 view.startAnimation(scaleAnim)

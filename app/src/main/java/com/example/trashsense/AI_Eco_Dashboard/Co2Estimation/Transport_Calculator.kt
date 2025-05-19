@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.trashsense.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
 class Transport_Calculator : Fragment() {
 
@@ -104,11 +105,11 @@ class Transport_Calculator : Fragment() {
             val newCO2 = existingCO2 + co2Saved
             val newWater = existingWater + waterSaved
 
-            userRef.update(
+            userRef.set(
                 mapOf(
                     "total_co2_savings" to newCO2,
                     "total_water_savings" to newWater
-                )
+                ), SetOptions.merge()
             ).addOnSuccessListener {
                 distanceEditText.text.clear()
                 Toast.makeText(requireContext(), "Savings updated!", Toast.LENGTH_SHORT).show()
