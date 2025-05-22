@@ -21,8 +21,8 @@
         />
 
     <item android:title="Leader"
-        android:icon="@drawable/event_24px"
-        android:id="@+id/navigation_event"
+        android:icon="@drawable/leader"
+        android:id="@+id/navigation_leaderboard"
         />
 
     <item

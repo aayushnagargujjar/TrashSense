@@ -19,7 +19,6 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
@@ -63,7 +62,8 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
-        android:background="@drawable/rounded_box">
+        android:background="@drawable/rounded_box"
+        android:layout_marginBottom="24dp">
 
         <ImageView
             android:id="@+id/mealImage"
@@ -83,6 +83,31 @@
             android:layout_marginTop="8dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/electricityOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@drawable/rounded_box">
 
+        <ImageView
+            android:id="@+id/electricityImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/electricity"
+            android:contentDescription="Electricity" />
+
+        <TextView
+            android:id="@+id/electricityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Electricity"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
 
 </LinearLayout>

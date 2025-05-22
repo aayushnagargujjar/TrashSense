@@ -132,57 +132,8 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 3. Sustainable Shopping -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp"
-                    android:gravity="center_vertical">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/grocery_cart"
-                        android:contentDescription="Shopping Icon" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingStart="12dp">
-
-                        <TextView
-                            android:text="Sustainable Shopping"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
-
-                        <TextView
-                            android:text="Analyze product sustainability"
-                            android:textSize="14sp"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/btnShop"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Analyze" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- 4. Environmental Forecasting -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

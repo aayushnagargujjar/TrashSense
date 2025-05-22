@@ -6,146 +6,220 @@
     android:layout_height="match_parent"
     tools:context=".profile.Profile_Fragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:fillViewport="true">
 
-        <!-- Profile picture -->
-        <ImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/account_circle_24px"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- Username -->
-        <TextView
-            android:id="@+id/pf_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@id/profile_pic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"/>
-
-        <!-- Icons Row -->
-        <LinearLayout
-            android:id="@+id/icon_row"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/pf_username"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_height="wrap_content">
 
-            <!-- Eco Icon -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <!-- Profile Picture -->
+            <ImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/account_circle_24px"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:clipToOutline="true" />
+
+            <!-- Username -->
+            <TextView
+                android:id="@+id/pf_username"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_marginTop="12dp"
+                android:text="Name"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/profile_pic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/eco"
-                    android:contentDescription="Eco Activities" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Eco\nActivities"
-                    android:textAlignment="center"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/eco_A_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="50"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginTop="4dp" />
-            </LinearLayout>
-
-            <!-- Water Icon -->
-            <LinearLayout
+            <!-- Stats Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/stats_card"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_marginTop="24dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintTop_toBottomOf="@id/pf_username"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/water"
-                    android:contentDescription="Water Saved" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Water\nSaved (L)"
-                    android:textAlignment="center"
-                    android:textSize="14sp" />
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/watersaved_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1600"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginTop="4dp" />
-            </LinearLayout>
+                    <!-- Eco Activity -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-            <!-- CO2 Icon -->
-            <LinearLayout
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/eco"
+                            android:contentDescription="Eco Activities" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Eco\nActivities"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/eco_A_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="50"
+                            android:textStyle="bold"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <!-- Water Saved -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/water"
+                            android:contentDescription="Water Saved" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Water\nSaved (L)"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/watersaved_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="1600"
+                            android:textStyle="bold"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <!-- CO2 Reduced -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/co2_1"
+                            android:contentDescription="CO2 Reduced" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CO2\nReduced (gm)"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/co2reduced_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="400"
+                            android:textStyle="bold"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CO2 Forecast -->
+            <TextView
+                android:id="@+id/co2_forecast_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="CO₂ Forecast"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="#333333"
+                app:layout_constraintTop_toBottomOf="@id/stats_card"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/co2_user_chart"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/co2_forecast_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Water Forecast -->
+            <TextView
+                android:id="@+id/water_forecast_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_marginTop="24dp"
+                android:text="Water Forecast"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="#333333"
+                app:layout_constraintTop_toBottomOf="@id/co2_user_chart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/co2_1"
-                    android:contentDescription="CO2 Reduced" />
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/water_user_chart"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="64dp"
+                app:layout_constraintTop_toBottomOf="@id/water_forecast_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CO2\nReduced (gm)"
-                    android:textAlignment="center"
-                    android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/co2reduced_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="400"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginTop="4dp" />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/logout_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/design_default_color_primary"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintTop_toBottomOf="@id/water_user_chart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <!-- Logout Button at bottom of scrollable content -->
+
+
+
+
 </FrameLayout>

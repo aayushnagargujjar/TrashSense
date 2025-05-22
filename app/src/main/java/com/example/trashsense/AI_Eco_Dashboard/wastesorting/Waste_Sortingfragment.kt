@@ -9,7 +9,9 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.*
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.trashsense.R
@@ -99,10 +101,12 @@ class Waste_Sortingfragment : Fragment() {
             photoFile?.also {
                 val photoURI: Uri = FileProvider.getUriForFile(
                     requireContext(),
-                    "${requireActivity().packageName}.provider",
+                    "${requireActivity().packageName}.provider",  // Must match Manifest authority
                     it
                 )
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                // Grant URI permission to camera activity
+                intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION)
                 startActivityForResult(intent, CAMERA_REQUEST)
             }
         }
@@ -129,7 +133,7 @@ class Waste_Sortingfragment : Fragment() {
                             MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, uri)
                         } else {
                             val source = ImageDecoder.createSource(requireActivity().contentResolver, uri)
-                            ImageDecoder.decodeBitmap(source)
+                            ImageDecoder.decodeBitmap(source).copy(Bitmap.Config.ARGB_8888, true)
                         }
                     }
                     bitmap?.let {
@@ -142,7 +146,7 @@ class Waste_Sortingfragment : Fragment() {
                     val file = File(currentPhotoPath)
                     val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                         val source = ImageDecoder.createSource(requireActivity().contentResolver, Uri.fromFile(file))
-                        ImageDecoder.decodeBitmap(source)
+                        ImageDecoder.decodeBitmap(source).copy(Bitmap.Config.ARGB_8888, true)
                     } else {
                         MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, Uri.fromFile(file))
                     }

@@ -35,11 +35,10 @@ class Replace_meal : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_replace_meal, container, false)
         val titleText = view.findViewById<TextView>(R.id.title)
-
         titleText.text = "You chose $realMeal. Tap a better alternative!"
 
         val options = mapOf(
-            R.id.Instead_Vegetable to "vegetables",
+            R.id.Instead_Vegetable to "vegetable",
             R.id.Instead_fruit to "fruit",
             R.id.Instead_fish to "fish",
             R.id.Instead_chicken to "chicken",
@@ -84,8 +83,8 @@ class Replace_meal : Fragment() {
             return
         }
 
-        val co2Saved = (realValues.first - insteadValues.first)
-        val waterSaved = (realValues.second - insteadValues.second)
+        val co2Saved = realValues.first - insteadValues.first
+        val waterSaved = realValues.second - insteadValues.second
 
         val userId = auth.currentUser?.uid ?: return
         val userRef = db.collection("User").document(userId)
@@ -111,6 +110,22 @@ class Replace_meal : Fragment() {
             }.addOnFailureListener {
                 Toast.makeText(requireContext(), "Failed to update savings.", Toast.LENGTH_SHORT).show()
             }
+
+            // Save savings data with timestamp to subcollection for graphing
+            val savingsEntry = mapOf(
+                "timestamp" to System.currentTimeMillis(),
+                "co2_saved" to co2Saved,
+                "water_saved" to waterSaved
+            )
+
+            userRef.collection("Timedata")
+                .add(savingsEntry)
+                .addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Meal savings logged!", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Failed to log meal savings.", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 }

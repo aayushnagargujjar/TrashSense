@@ -17,7 +17,7 @@ class Transport_Calculator : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var fb: FirebaseFirestore
-   private lateinit var distanceEditText:EditText
+    private lateinit var distanceEditText: EditText
     private var realT: String? = null
     private var insteadT: String? = null
 
@@ -40,7 +40,7 @@ class Transport_Calculator : Fragment() {
 
         val realTView = view.findViewById<TextView>(R.id.realTTextView)
         val insteadTView = view.findViewById<TextView>(R.id.insteadTTextView)
-         distanceEditText = view.findViewById<EditText>(R.id.distanceEditText)
+        distanceEditText = view.findViewById(R.id.distanceEditText)
         val checksaving_tBtn = view.findViewById<TextView>(R.id.checksaving_tBtn)
 
         realTView.text = "Your transport: $realT"
@@ -63,20 +63,14 @@ class Transport_Calculator : Fragment() {
                 return@setOnClickListener
             }
 
-            // Compute exact CO₂ and water savings
-            val co2SavedPerKm = insteadValues.first - realValues.first
-            val waterSavedPerKm = insteadValues.second - realValues.second
+            // Compute CO₂ and water savings
+            val co2SavedPerKm = realValues.first - insteadValues.first
+            val waterSavedPerKm = realValues.second - insteadValues.second
 
             val exactCo2Saved = (co2SavedPerKm * distance).toInt()
             val exactWaterSaved = waterSavedPerKm * distance
 
             updateUserSavings(exactCo2Saved, exactWaterSaved)
-
-            Toast.makeText(
-                requireContext(),
-                "You saved $exactCo2Saved g CO₂ and %.2f L water!".format(exactWaterSaved),
-                Toast.LENGTH_LONG
-            ).show()
         }
 
         return view
@@ -96,8 +90,8 @@ class Transport_Calculator : Fragment() {
 
     private fun updateUserSavings(co2Saved: Int, waterSaved: Float) {
         val userId = auth.currentUser?.uid ?: return
-
         val userRef = fb.collection("User").document(userId)
+
         userRef.get().addOnSuccessListener { document ->
             val existingCO2 = document.getLong("total_co2_savings")?.toInt() ?: 0
             val existingWater = document.getDouble("total_water_savings")?.toFloat() ?: 0f
@@ -105,17 +99,35 @@ class Transport_Calculator : Fragment() {
             val newCO2 = existingCO2 + co2Saved
             val newWater = existingWater + waterSaved
 
-            userRef.set(
-                mapOf(
-                    "total_co2_savings" to newCO2,
-                    "total_water_savings" to newWater
-                ), SetOptions.merge()
-            ).addOnSuccessListener {
-                distanceEditText.text.clear()
-                Toast.makeText(requireContext(), "Savings updated!", Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener {
-                Toast.makeText(requireContext(), "Failed to update database.", Toast.LENGTH_SHORT).show()
-            }
+            val updateData = mapOf(
+                "total_co2_savings" to newCO2,
+                "total_water_savings" to newWater
+            )
+
+            userRef.set(updateData, SetOptions.merge())
+                .addOnSuccessListener {
+                    distanceEditText.text.clear()
+                    Toast.makeText(requireContext(), "Savings updated!", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Failed to update database.", Toast.LENGTH_SHORT).show()
+                }
+
+
+            val timeSeriesData = mapOf(
+                "timestamp" to System.currentTimeMillis(),
+                "co2_saved" to co2Saved,
+                "water_saved" to waterSaved
+            )
+
+            userRef.collection("Timedata")
+                .add(timeSeriesData)
+                .addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Logged for chart!", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Failed to log savings data.", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 }

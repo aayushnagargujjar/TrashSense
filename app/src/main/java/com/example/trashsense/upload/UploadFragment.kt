@@ -24,6 +24,7 @@ import com.example.trashsense.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -195,6 +196,29 @@ class UploadFragment : Fragment() {
                         "Username" to pf_username,
                         "text" to text
                     )
+                    val userId = auth.currentUser?.uid ?: return
+                    val userRef =db.collection("User").document(userId)
+
+                    userRef.get().addOnSuccessListener { document ->
+                        val existingevent = document.getLong("Eco_Activity")?.toInt() ?: 0
+
+
+                        val newevent = existingevent + 1
+
+
+                        val updateData = mapOf(
+                            "Eco_Activity" to newevent
+
+                        )
+
+                        userRef.set(updateData, SetOptions.merge())
+                            .addOnSuccessListener {
+                                Toast.makeText(requireContext(), "event updated!", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(requireContext(), "Failed to update database.", Toast.LENGTH_SHORT).show()
+                            }
+                    }
 
                     db.collection("Posts").document("Data").collection("Aayush").add(postMap)
                         .addOnSuccessListener {

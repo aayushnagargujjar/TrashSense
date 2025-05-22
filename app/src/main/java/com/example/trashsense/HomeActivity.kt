@@ -10,9 +10,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.trashsense.AI_Eco_Dashboard.Ai_Eco_Dashboard
-
-
+import com.example.trashsense.Leaderboard.Leaderboard
 import com.example.trashsense.profile.Profile_Fragment
+
+
 import com.example.trashsense.upload.DailyActivity
 import com.example.trashsense.upload.UploadFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView.itemBackground = null
 
         var homeFragment =HomeFragment()
-        var profilefrag =Profile_Fragment()
+        var profilefrag = Profile_Fragment()
         var uploadfrag =DailyActivity()
         var EcoaiFragment =Ai_Eco_Dashboard()
 
@@ -65,6 +66,10 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.navigation_ECo_ai-> {
                     setCurrentFragment(EcoaiFragment)
+                    true
+                }
+                R.id.navigation_leaderboard-> {
+                    setCurrentFragment(Leaderboard())
                     true
                 }
 
