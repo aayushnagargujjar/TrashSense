@@ -25,7 +25,6 @@ class Choose_Transport : Fragment() {
 
         scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.item_click)
 
-
         val transportOptions = mapOf(
             view.findViewById<LinearLayout>(R.id.realT_walk) to "walk",
             view.findViewById<LinearLayout>(R.id.realT_cycle) to "cycle",
@@ -35,25 +34,33 @@ class Choose_Transport : Fragment() {
             view.findViewById<LinearLayout>(R.id.realT_car) to "car"
         )
 
-
-        transportOptions.forEach { (view, transportType) ->
-            view.setOnClickListener {
-                view.startAnimation(scaleAnim)
+        transportOptions.forEach { (transportView, transportType) ->
+            transportView.setOnClickListener {
+                transportView.startAnimation(scaleAnim)
 
                 scaleAnim.setAnimationListener(object : Animation.AnimationListener {
                     override fun onAnimationStart(animation: Animation?) {}
 
                     override fun onAnimationEnd(animation: Animation?) {
-                        val fragment = Instedof_Transport().apply {
-                            arguments = Bundle().apply {
-                                putString("realT", transportType)
-                            }
-                        }
 
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(R.id.flFragment, fragment)
-                            .addToBackStack(null)
-                            .commit()
+                        val currentContext = context
+                        val currentResources = resources
+
+                        if (currentContext != null) {
+                            val id = currentResources.getIdentifier("realT_${transportType}", "drawable", currentContext.packageName)
+
+                            val fragment = Instedof_Transport().apply {
+                                arguments = Bundle().apply {
+                                    putString("realT", transportType)
+                                    putInt("realApplianceIconId", id)
+                                }
+                            }
+
+                            requireActivity().supportFragmentManager.beginTransaction()
+                                .replace(R.id.flFragment, fragment)
+                                .addToBackStack(null)
+                                .commit()
+                        }
                     }
 
                     override fun onAnimationRepeat(animation: Animation?) {}

@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.trashsense.AI_Eco_Dashboard.ValueorData_shower
 import com.example.trashsense.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -83,8 +84,8 @@ class Replace_meal : Fragment() {
             return
         }
 
-        val co2Saved = realValues.first - insteadValues.first
-        val waterSaved = realValues.second - insteadValues.second
+        val co2Saved = -realValues.first +insteadValues.first
+        val waterSaved = -realValues.second+insteadValues.second
 
         val userId = auth.currentUser?.uid ?: return
         val userRef = db.collection("User").document(userId)
@@ -107,11 +108,20 @@ class Replace_meal : Fragment() {
                     "You saved $co2Saved g CO₂ and %.2f L water!".format(waterSaved),
                     Toast.LENGTH_LONG
                 ).show()
+                val fragment = ValueorData_shower().apply {
+                    arguments  = Bundle().apply {
+                        putFloat("co2_value",co2Saved.toFloat())
+                        putFloat("water_value",waterSaved)
+                    }}
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.flFragment,fragment)
+                    .addToBackStack(null)
+                    .commit()
             }.addOnFailureListener {
                 Toast.makeText(requireContext(), "Failed to update savings.", Toast.LENGTH_SHORT).show()
             }
 
-            // Save savings data with timestamp to subcollection for graphing
+
             val savingsEntry = mapOf(
                 "timestamp" to System.currentTimeMillis(),
                 "co2_saved" to co2Saved,

@@ -14,13 +14,14 @@ class Instedof_Transport : Fragment() {
 
     private var realT: String? = null
     private lateinit var scaleAnim: Animation
+    private var realApplianceid: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         arguments?.let {
             realT = it.getString("realT")
+            realApplianceid =it.getInt("realApplianceIconId")
         }
     }
 
@@ -32,7 +33,6 @@ class Instedof_Transport : Fragment() {
 
 
         scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.item_click)
-
 
         val transportOptions = mapOf(
             view.findViewById<LinearLayout>(R.id.InsteadT_walk) to "walk",
@@ -51,17 +51,27 @@ class Instedof_Transport : Fragment() {
                     override fun onAnimationStart(animation: Animation?) {}
 
                     override fun onAnimationEnd(animation: Animation?) {
-                        val fragment = Transport_Calculator().apply {
-                            arguments = Bundle().apply {
-                                putString("realT", realT)
-                                putString("insteadT", insteadT)
-                            }
-                        }
 
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(R.id.flFragment, fragment)
-                            .addToBackStack(null)
-                            .commit()
+                        val currentContext = context
+                        val currentResources = resources
+
+                        if (currentContext != null) {
+                            val id = currentResources.getIdentifier("Instead_${insteadT}", "drawable", currentContext.packageName)
+
+                            val fragment = Transport_Calculator().apply {
+                                arguments = Bundle().apply {
+                                    putString("realT", realT)
+                                    putString("insteadT", insteadT)
+                                    realApplianceid?.let { realId -> putInt("realApplianceIconId", realId) }
+                                    putInt("InsteadApplianceIconId", id)
+                                }
+                            }
+
+                            requireActivity().supportFragmentManager.beginTransaction()
+                                .replace(R.id.flFragment, fragment)
+                                .addToBackStack(null)
+                                .commit()
+                        }
                     }
 
                     override fun onAnimationRepeat(animation: Animation?) {}

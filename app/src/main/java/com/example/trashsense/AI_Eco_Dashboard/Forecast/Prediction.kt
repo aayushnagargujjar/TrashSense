@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.google.firebase.auth.FirebaseAuth
 
 class Prediction : Fragment() {
 
@@ -30,6 +31,7 @@ class Prediction : Fragment() {
     private lateinit var progressBar: ProgressBar
 
     private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
     private val TAG = "PredictionFragment"
 
     @SuppressLint("MissingInflatedId")
@@ -57,31 +59,59 @@ class Prediction : Fragment() {
     private fun triggerForecastAPI() {
         progressBar.visibility = View.VISIBLE
 
-        val request = ForecastRequest(uid = "user123")
+
+        val currentUserUid = auth.currentUser?.uid
+        if (currentUserUid == null) {
+            Toast.makeText(requireContext(), "User not logged in. Cannot make forecast.", Toast.LENGTH_LONG).show()
+            progressBar.visibility = View.GONE
+            return
+        }
+
+
+        val request = ForecastRequest(uid = currentUserUid)
         RetrofitClient.apiService.triggerForecast(request)
             .enqueue(object : Callback<ForecastResponse> {
                 override fun onResponse(call: Call<ForecastResponse>, response: Response<ForecastResponse>) {
                     progressBar.visibility = View.GONE
                     if (response.isSuccessful) {
-                        Toast.makeText(requireContext(), "Forecast successful!", Toast.LENGTH_SHORT).show()
+                        val forecastResponse = response.body()
+                        Toast.makeText(requireContext(), forecastResponse?.message ?: "Forecast successful!", Toast.LENGTH_SHORT).show()
+                        Log.d(TAG, "Forecast result: ${forecastResponse?.message}, Data: ${forecastResponse?.forecast}")
+
+
                         fetchAndDisplayData("user_forecast", "user_forecast", "Forecast Data")
-                        Log.d(TAG, "Forecast result: ${response.body()?.message}")
                     } else {
-                        val error = response.errorBody()?.string()
-                        Toast.makeText(requireContext(), "Forecast failed: ${response.code()}", Toast.LENGTH_LONG).show()
-                        Log.e(TAG, "API Error: ${response.code()} - $error")
+
+                        val errorBody = response.errorBody()?.string()
+                        val errorMessage = try {
+
+                            val errorJson = org.json.JSONObject(errorBody)
+                            errorJson.optString("error", "Unknown server error")
+                        } catch (e: Exception) {
+
+                            "Server error: ${response.code()} - $errorBody"
+                        }
+                        Toast.makeText(requireContext(), "Forecast failed: $errorMessage", Toast.LENGTH_LONG).show()
+                        Log.e(TAG, "API Error: ${response.code()} - $errorBody")
                     }
                 }
 
                 override fun onFailure(call: Call<ForecastResponse>, t: Throwable) {
                     progressBar.visibility = View.GONE
-                    Toast.makeText(requireContext(), "Forecast failed: ${t.message}", Toast.LENGTH_LONG).show()
-                    Log.e(TAG, "Forecast error", t)
+                    Toast.makeText(requireContext(), "Network error: ${t.message}", Toast.LENGTH_LONG).show()
+                    Log.e(TAG, "Forecast network error", t)
                 }
             })
     }
 
     private fun addSampleDataToFirestore() {
+
+        val currentUserUid = auth.currentUser?.uid
+        if (currentUserUid == null) {
+            Toast.makeText(requireContext(), "User not logged in. Cannot add sample data.", Toast.LENGTH_LONG).show()
+            return
+        }
+
         val co2Data = listOf(
             mapOf("date" to "2025-05-01", "value" to 4.5),
             mapOf("date" to "2025-05-02", "value" to 4.8),
@@ -102,10 +132,10 @@ class Prediction : Fragment() {
             mapOf("date" to "2025-05-07", "value" to 32.8)
         )
 
-        db.collection("users").document("user123")
+        db.collection("users").document(currentUserUid) // Use actual UID
             .set(mapOf("co2_data" to co2Data, "water_data" to waterData))
             .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Sample data added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Sample data added for $currentUserUid", Toast.LENGTH_SHORT).show()
                 fetchAndDisplayData("co2_data", "water_data", "Historical Data")
             }
             .addOnFailureListener { e ->
@@ -115,41 +145,54 @@ class Prediction : Fragment() {
     }
 
     private fun fetchAndDisplayData(co2FieldName: String, waterFieldName: String, title: String) {
-        db.collection("users").document("user123").get()
+        val currentUserUid = auth.currentUser?.uid
+        if (currentUserUid == null) {
+            Log.w(TAG, "No user logged in, cannot fetch data.")
+            clearCharts()
+            return
+        }
+
+        db.collection("users").document(currentUserUid).get()
             .addOnSuccessListener { doc ->
-                val co2DataList = doc.get(co2FieldName) as? List<Map<String, Any>>
-                val waterDataList = if (co2FieldName == waterFieldName) co2DataList
-                else doc.get(waterFieldName) as? List<Map<String, Any>>
+                val co2DataList: List<Map<String, Any>>? = doc.get(co2FieldName) as? List<Map<String, Any>>
+                val waterDataList: List<Map<String, Any>>? = if (co2FieldName == waterFieldName) {
+                    co2DataList
+                } else {
+                    doc.get(waterFieldName) as? List<Map<String, Any>>
+                }
 
                 if (!co2DataList.isNullOrEmpty()) {
                     val co2Entries = mutableListOf<Entry>()
                     val waterEntries = mutableListOf<Entry>()
                     val dates = mutableListOf<String>()
+                    val co2ValueKey = if (co2FieldName == "user_forecast") "co2_pred" else "value"
+                    val waterValueKey = if (waterFieldName == "user_forecast") "water_pred" else "value"
 
-                    val co2Key = if (co2FieldName == "user_forecast") "co2_pred" else "value"
-                    val waterKey = if (waterFieldName == "user_forecast") "water_pred" else "value"
 
                     co2DataList.forEachIndexed { i, item ->
                         val date = item["date"] as? String ?: ""
-                        val co2 = (item[co2Key] as? Number)?.toFloat() ?: 0f
-                        val water = (waterDataList?.getOrNull(i)?.get(waterKey) as? Number)?.toFloat() ?: 0f
+                        val co2 = (item[co2ValueKey] as? Number)?.toFloat() ?: 0f // Default to 0f if null
                         dates.add(date)
                         co2Entries.add(Entry(i.toFloat(), co2))
+                        val water = (waterDataList?.getOrNull(i)?.get(waterValueKey) as? Number)?.toFloat() ?: 0f
                         waterEntries.add(Entry(i.toFloat(), water))
                     }
 
                     updateCharts(co2Entries, waterEntries, dates, title)
                 } else {
                     clearCharts()
+                    Toast.makeText(requireContext(), "No data found for '$title'", Toast.LENGTH_SHORT).show()
                 }
             }
-            .addOnFailureListener {
-                Toast.makeText(requireContext(), "Failed to load $title", Toast.LENGTH_LONG).show()
+            .addOnFailureListener { e ->
+                Toast.makeText(requireContext(), "Failed to load $title: ${e.message}", Toast.LENGTH_LONG).show()
+                Log.e(TAG, "Firestore fetch error for $title", e)
                 clearCharts()
             }
     }
 
     private fun updateCharts(co2: List<Entry>, water: List<Entry>, labels: List<String>, title: String) {
+
         val co2DataSet = LineDataSet(co2, "CO₂ (kg) - $title").apply {
             color = Color.GREEN
             setCircleColor(Color.GREEN)
@@ -174,8 +217,10 @@ class Prediction : Fragment() {
         setupChart(waterChart, labels)
         waterChart.invalidate()
 
+
         if (title == "Forecast Data" && water.all { it.y == 0f }) {
             waterChart.visibility = View.GONE
+            Log.d(TAG, "Water forecast data is all zero, hiding water chart.")
         } else {
             waterChart.visibility = View.VISIBLE
         }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:padding="24dp"
     android:background="#FAFAFA"
     tools:context=".AI_Eco_Dashboard.Co2Estimation.Electricity.Electricity_Calculator">
@@ -112,7 +113,7 @@
                         android:id="@+id/insteadApplianceIcon"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_ledbulb"
+                        android:src="@drawable/ic_led_bulb"
                         android:layout_marginEnd="12dp" />
 
                     <LinearLayout

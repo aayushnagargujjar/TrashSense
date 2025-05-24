@@ -40,6 +40,7 @@ class Profile_Fragment : Fragment() {
         val pfImageView = view.findViewById<ImageView>(R.id.profile_pic)
         val pfUsername = view.findViewById<TextView>(R.id.pf_username)
         val ecotext = view.findViewById<TextView>(R.id.eco_A_number)
+        val unit = view.findViewById<TextView>(R.id.units_saved_label)
         val watertext = view.findViewById<TextView>(R.id.watersaved_number)
         val co2text = view.findViewById<TextView>(R.id.co2reduced_number)
         val logoutButton = view.findViewById<Button>(R.id.logout_btn)
@@ -56,7 +57,8 @@ class Profile_Fragment : Fragment() {
                         ecotext.text = (document.getDouble("Eco_Activity") ?: 0.0).toInt().toString()
                         watertext.text = (document.getDouble("total_water_savings") ?: 0.0).toInt().toString()
                         co2text.text = (document.getDouble("total_co2_savings") ?: 0.0).toInt().toString()
-
+                        var units=(document.getDouble("total_electricity_savings") ?: 0.0).toInt().toString()
+                        unit.text = "Electricity Units Saved: $units"
                         val imageUrl = document.getString("url")
                         if (!imageUrl.isNullOrEmpty()) {
                             Glide.with(requireContext())

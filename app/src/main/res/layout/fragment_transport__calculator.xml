@@ -61,12 +61,18 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
+                    <ImageView
+                        android:id="@+id/real_t_iconid"
+                        android:layout_width="121dp"
+                        android:layout_height="31dp"
+                        android:src="@drawable/cycle" />
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="59dp"
                         android:layout_height="wrap_content"
                         android:text="Real:"
                         android:textColor="#757575"
-                        android:textSize="14sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/realTTextView"
@@ -74,8 +80,9 @@
                         android:layout_height="wrap_content"
                         android:text="Car"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -95,12 +102,18 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
+                    <ImageView
+                        android:id="@+id/instead_t_iconid"
+                        android:layout_width="113dp"
+                        android:layout_height="31dp"
+                        android:src="@drawable/ic_car" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Instead:"
                         android:textColor="#757575"
-                        android:textSize="14sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/insteadTTextView"
@@ -108,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:text="Cycle"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

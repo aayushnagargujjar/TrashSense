@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.tensorflow.lite.support)
     implementation(libs.tensorflow.lite.metadata)
     implementation(libs.tensorflow.lite.gpu)
+    implementation(libs.androidx.media3.common.ktx)
 
 
     testImplementation(libs.junit)

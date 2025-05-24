@@ -21,19 +21,19 @@ class Real_Electricity : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_electricity__calculator, container, false)
+        val view = inflater.inflate(R.layout.fragment_real__electricity, container, false)
         scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.item_click)
 
         val electricityOptions = mapOf(
-            view.findViewById<CardView>(R.id.Icard_solar) to "solar",
-            view.findViewById<CardView>(R.id.Icard_led) to "led",
-            view.findViewById<CardView>(R.id.Icard_fan) to "fan",
-            view.findViewById<CardView>(R.id.Icard_tubelight) to "tubelight",
-            view.findViewById<CardView>(R.id.Icard_ledbulb) to "ledbulb",
-            view.findViewById<CardView>(R.id.Icard_tv) to "tv",
-            view.findViewById<CardView>(R.id.Icard_ac) to "ac",
-            view.findViewById<CardView>(R.id.Icard_cooler) to "cooler",
-            view.findViewById<CardView>(R.id.Icard_fridge) to "fridge"
+            view.findViewById<CardView>(R.id.card_solar) to "solar",
+            view.findViewById<CardView>(R.id.card_led) to "led",
+            view.findViewById<CardView>(R.id.card_fan) to "fan",
+            view.findViewById<CardView>(R.id.card_tubelight) to "tubelight",
+            view.findViewById<CardView>(R.id.card_ledbulb) to "ledbulb",
+            view.findViewById<CardView>(R.id.card_tv) to "tv",
+            view.findViewById<CardView>(R.id.card_ac) to "ac",
+            view.findViewById<CardView>(R.id.card_cooler) to "cooler",
+            view.findViewById<CardView>(R.id.card_fridge) to "fridge"
         )
 
         electricityOptions.forEach { (card, applianceType) ->
@@ -44,16 +44,25 @@ class Real_Electricity : Fragment() {
                     override fun onAnimationStart(animation: Animation?) {}
 
                     override fun onAnimationEnd(animation: Animation?) {
-                        val fragment = Instead_electricity().apply {
-                            arguments = Bundle().apply {
-                                putString("realAppliance", applianceType)
-                            }
-                        }
 
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(R.id.flFragment, fragment)
-                            .addToBackStack(null)
-                            .commit()
+                        val currentContext = context
+                        val currentResources = resources
+
+                        if (currentContext != null) {
+                            val id = currentResources.getIdentifier("card_${applianceType}", "drawable", currentContext.packageName)
+
+                            val fragment = Instead_electricity().apply {
+                                arguments = Bundle().apply {
+                                    putString("realAppliance", applianceType)
+                                    putInt("realApplianceIconId", id)
+                                }
+                            }
+
+                            requireActivity().supportFragmentManager.beginTransaction()
+                                .replace(R.id.flFragment, fragment)
+                                .addToBackStack(null)
+                                .commit()
+                        }
                     }
 
                     override fun onAnimationRepeat(animation: Animation?) {}

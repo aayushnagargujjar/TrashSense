@@ -190,6 +190,7 @@ class UsernameActivity : AppCompatActivity() {
                             db.collection("User").document(uid).set(userMap).addOnSuccessListener {
                                 Toast.makeText(this@UsernameActivity,"Username and profilepic store succesfully",Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this@UsernameActivity,Question1::class.java))
+                                finish()
                             }.addOnFailureListener{
                                 Toast.makeText(this@UsernameActivity,"Username Not store in firebasefirestore ",Toast.LENGTH_SHORT).show()
                             }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
+import com.example.trashsense.AI_Eco_Dashboard.Co2Estimation.Electricity.Real_Electricity
 import com.example.trashsense.AI_Eco_Dashboard.Co2Estimation.Meal.MealFragment
 import com.example.trashsense.R
 
@@ -61,7 +62,24 @@ class C02Estimation : Fragment() {
                 override fun onAnimationRepeat(animation: Animation?) {}
             })
         }
+        val elec = view.findViewById<LinearLayout>(R.id.electricityOption)
+         elec.setOnClickListener{
+          elec.startAnimation(scaleAnim)
 
+          scaleAnim.setAnimationListener(object : Animation.AnimationListener {
+              override fun onAnimationStart(animation: Animation?) {}
+
+              override fun onAnimationEnd(animation: Animation?) {
+                  val tFragment = Real_Electricity()
+                  requireActivity().supportFragmentManager.beginTransaction()
+                      .replace(R.id.flFragment, tFragment)
+                      .addToBackStack(null)
+                      .commit()
+              }
+
+              override fun onAnimationRepeat(animation: Animation?) {}
+          })
+      }
         return view
     }
 }

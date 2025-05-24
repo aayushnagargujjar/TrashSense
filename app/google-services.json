@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "281283749126",
+    "firebase_url": "https://trashsense1-default-rtdb.firebaseio.com",
     "project_id": "trashsense1",
     "storage_bucket": "trashsense1.firebasestorage.app"
   },
