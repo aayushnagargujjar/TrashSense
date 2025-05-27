@@ -1,6 +1,6 @@
 package com.example.trashsense
 
-import HomeFragment
+
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.trashsense.AI_Eco_Dashboard.Ai_Eco_Dashboard
 import com.example.trashsense.Leaderboard.Leaderboard
+import com.example.trashsense.home.HomeFragment
 import com.example.trashsense.profile.Profile_Fragment
 
 

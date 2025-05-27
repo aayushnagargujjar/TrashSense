@@ -1,49 +1,72 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
     android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/questionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="What are your top sustainability interests?"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingBottom="16dp"/>
-
-    <CheckBox
-        android:id="@+id/optionGardening"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gardening 🌱"/>
-
-    <CheckBox
-        android:id="@+id/optionVegan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vegan lifestyle 🌿"/>
-
-    <CheckBox
-        android:id="@+id/optionTransport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clean transport 🚲"/>
-
-    <CheckBox
-        android:id="@+id/optionWaste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zero waste ♻️"/>
-
-    <Button
-        android:id="@+id/btnNext"
+    <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next ➡️"
-        android:layout_marginTop="24dp"/>
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="What are your top sustainability interests?"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#222222"
+            android:paddingBottom="16dp" />
+
+        <CheckBox
+            android:id="@+id/optionGardening"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gardening 🌱"
+            android:textSize="18sp"
+            android:paddingVertical="8dp" />
+
+        <CheckBox
+            android:id="@+id/optionVegan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vegan lifestyle 🌿"
+            android:textSize="18sp"
+            android:paddingVertical="8dp" />
+
+        <CheckBox
+            android:id="@+id/optionTransport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clean transport 🚲"
+            android:textSize="18sp"
+            android:paddingVertical="8dp" />
+
+        <CheckBox
+            android:id="@+id/optionWaste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Zero waste ♻️"
+            android:textSize="18sp"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next ➡️"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@android:color/white"
+            android:padding="12dp" />
+
+    </LinearLayout>
+</ScrollView>

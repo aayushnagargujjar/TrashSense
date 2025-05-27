@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="7dp"
@@ -15,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
+        <!-- Profile Picture -->
         <ImageView
             android:id="@+id/Home_post_pf_pic"
             android:layout_width="48dp"
@@ -24,11 +25,10 @@
             android:src="@drawable/account_circle_24px"
             android:contentDescription="User Profile"
             android:scaleType="centerCrop"
-            android:background="@drawable/account_circle_24px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
+        <!-- Username -->
         <TextView
             android:id="@+id/Home_post_username"
             android:layout_width="0dp"
@@ -43,7 +43,7 @@
             app:layout_constraintStart_toEndOf="@id/Home_post_pf_pic"
             app:layout_constraintEnd_toEndOf="parent" />
 
-
+        <!-- Post Text -->
         <TextView
             android:id="@+id/Home_post_text"
             android:layout_width="0dp"
@@ -59,7 +59,7 @@
             app:layout_constraintStart_toStartOf="@id/Home_post_username"
             app:layout_constraintEnd_toEndOf="parent" />
 
-
+        <!-- Post Image -->
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="0dp"
@@ -72,6 +72,55 @@
             app:layout_constraintTop_toBottomOf="@id/Home_post_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Like & Share Section -->
+        <LinearLayout
+            android:id="@+id/Home_post_actions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="4dp"
+            android:paddingTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/imageView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="4dp">
+
+            <ImageButton
+                android:id="@+id/Home_post_like_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_unlike"
+                android:contentDescription="Like"
+                 />
+
+            <TextView
+                android:id="@+id/Home_post_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:layout_marginStart="6dp"
+                android:layout_gravity="center_vertical"
+                tools:ignore="HardcodedText" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/Home_post_share_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_share"
+                android:contentDescription="Share"
+                />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

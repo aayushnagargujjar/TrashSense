@@ -26,7 +26,7 @@ class Real_Electricity : Fragment() {
 
         val electricityOptions = mapOf(
             view.findViewById<CardView>(R.id.card_solar) to "solar",
-            view.findViewById<CardView>(R.id.card_led) to "led",
+            view.findViewById<CardView>(R.id.card_led) to "ledtv",
             view.findViewById<CardView>(R.id.card_fan) to "fan",
             view.findViewById<CardView>(R.id.card_tubelight) to "tubelight",
             view.findViewById<CardView>(R.id.card_ledbulb) to "ledbulb",

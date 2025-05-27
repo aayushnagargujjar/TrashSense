@@ -36,7 +36,7 @@ class Instead_electricity : Fragment() {
 
         val alternativeOptions = mapOf(
             view.findViewById<CardView>(R.id.Icard_solar) to "solar",
-            view.findViewById<CardView>(R.id.Icard_led) to "led",
+            view.findViewById<CardView>(R.id.Icard_ledtv) to "ledtv",
             view.findViewById<CardView>(R.id.Icard_fan) to "fan",
             view.findViewById<CardView>(R.id.Icard_tubelight) to "tubelight",
             view.findViewById<CardView>(R.id.Icard_ledbulb) to "ledbulb",

@@ -162,12 +162,12 @@
             android:layout_marginBottom="16dp"
             android:textSize="16sp" />
 
-        <!-- Calculate Button -->
+
         <Button
             android:id="@+id/checksaving_eBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estimate Carbon Savings"
+            android:text="Estimate Savings"
             android:textSize="16sp"
             android:textStyle="bold"
             android:backgroundTint="#2E7D32"

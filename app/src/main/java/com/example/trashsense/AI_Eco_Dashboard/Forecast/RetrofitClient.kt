@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://forecast-app-hz6k.onrender.com/"
+    private const val BASE_URL = "https://predict2.onrender.com"
 
     private val client = OkHttpClient.Builder()
         .connectTimeout(90, TimeUnit.SECONDS)

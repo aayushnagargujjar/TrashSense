@@ -48,7 +48,7 @@ class Leaderboard : Fragment() {
                 LeaderboardUser(name, avatarUrl, co2, water, actions)
             }
 
-            populateLeaderboard(co2Container, users.sortedBy { it.totalCo2 }.take(3), "gm")
+            populateLeaderboard(co2Container, users.sortedByDescending { it.totalCo2 }.take(3), "gm")
             populateLeaderboard(waterContainer, users.sortedByDescending { it.totalWater }.take(3), "ml")
             populateLeaderboard(actionContainer, users.sortedByDescending { it.totalActions }.take(3), "actions")
         }

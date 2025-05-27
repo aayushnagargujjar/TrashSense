@@ -125,7 +125,7 @@ class Electricity_Calculator : Fragment() {
             "tv", "television", "lcdtv" -> ApplianceConsumption(42.5f, 0.1f, 0.050f) // 50W LCD TV
             "ledtv" -> ApplianceConsumption(25.5f, 0.06f, 0.030f) // 30W LED TV
             "ac", "airconditioner" -> ApplianceConsumption(1275f, 3.0f, 1.500f) // 1500W AC
-            "efficientac", "5starac" -> ApplianceConsumption(850f, 2.0f, 1.000f) // 1000W 5-star AC
+            "solar", "5starac" -> ApplianceConsumption(10f, .05f, .000f) //
             "fan", "ceilingfan" -> ApplianceConsumption(63.75f, 0.15f, 0.075f) // 75W Fan
             "efficientfan", "bldcfan" -> ApplianceConsumption(29.75f, 0.07f, 0.035f) // 35W BLDC Fan
             "cooler", "aircooler" -> ApplianceConsumption(170f, 0.4f, 0.200f) // 200W Air Cooler
@@ -221,8 +221,9 @@ class Electricity_Calculator : Fragment() {
 
     private fun setApplianceIcon(imageView: ImageView, applianceName: String?) {
         val iconResId = when (applianceName?.lowercase()?.replace(" ", "")) {
-            "bulb", "incandescentbulb" -> R.drawable.ic_led_bulb
-            "led", "ledbulb", "ledlighting" -> R.drawable.ic_led
+          "solar" -> R.drawable.ic_solar
+            "led", "ledbulb", "ledlighting" -> R.drawable.ic_led_bulb
+            "ledtv"->R.drawable.ic_led
             "tubelight" -> R.drawable.ic_tubelight
             "tv" -> R.drawable.ic_tv
             "ac" -> R.drawable.ic_ac

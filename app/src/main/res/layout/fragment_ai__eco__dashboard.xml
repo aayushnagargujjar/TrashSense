@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
-    android:layout_height="match_parent">
-
-    <!-- Material Top App Bar -->
+    <!-- Top App Bar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:backgroundTint="#388E3C"
         android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
         app:title="AI Tools for Sustainability"
@@ -22,22 +22,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:padding="16dp"
-
-        android:background="@android:color/white">
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center_horizontal">
 
-            <!-- 1. CO₂ Estimation -->
+            <TextView
+                android:id="@+id/motivation_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🌱 Every small step counts! Let's create a greener future together."
+                android:textSize="16sp"
+                android:textColor="#2E7D32"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:paddingTop="8dp" />
+
+
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardElevation="4dp"
+                app:cardElevation="6dp"
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
@@ -61,17 +72,20 @@
                         android:paddingStart="12dp">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="CO₂ Estimation"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:textColor="#212121" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Estimate your carbon footprint"
                             android:textSize="14sp"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:textColor="#666666"
+                            android:layout_marginTop="4dp" />
                     </LinearLayout>
 
                     <Button
@@ -82,13 +96,13 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 2. Waste Sorting -->
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -111,17 +125,20 @@
                         android:paddingStart="12dp">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Waste Sorting"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:textColor="#212121" />
 
                         <TextView
-                            android:text="Identify recyclable materials"
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            android:textSize="14sp" />
+                            android:layout_height="wrap_content"
+                            android:text="Identify recyclable materials"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:layout_marginTop="4dp" />
                     </LinearLayout>
 
                     <Button
@@ -132,14 +149,13 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-
-
+            <!-- Card: Impact Forecasting -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -162,17 +178,20 @@
                         android:paddingStart="12dp">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Impact Forecasting"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:textColor="#212121" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Predict environmental trends"
                             android:textSize="14sp"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:textColor="#666666"
+                            android:layout_marginTop="4dp" />
                     </LinearLayout>
 
                     <Button

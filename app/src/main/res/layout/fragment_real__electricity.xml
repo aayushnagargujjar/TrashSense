@@ -91,7 +91,7 @@
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_led_bulb"
+                        android:src="@drawable/ic_led"
                         android:contentDescription="LED" />
 
                     <TextView

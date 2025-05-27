@@ -153,7 +153,7 @@
             android:id="@+id/checksaving_tBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estimate Carbon Savings"
+            android:text="Estimate Savings"
             android:textSize="16sp"
             android:textStyle="bold"
             android:backgroundTint="#2E7D32"

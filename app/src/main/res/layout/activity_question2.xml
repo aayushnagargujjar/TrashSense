@@ -1,47 +1,68 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:background="@android:color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Where do you live?"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingBottom="16dp"/>
-
-    <RadioGroup
-        android:id="@+id/locationGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/radioUrban"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Urban 🏙️" />
-
-        <RadioButton
-            android:id="@+id/radioSuburban"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Suburban 🏘️" />
-
-        <RadioButton
-            android:id="@+id/radioRural"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rural 🌾" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/btnNextLocation"
+    <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next ➡️"
-        android:layout_marginTop="24dp"/>
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Where do you live?"
+            android:layout_marginTop="50dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#222222"
+            android:paddingBottom="16dp" />
+
+        <RadioGroup
+            android:id="@+id/locationGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioUrban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Urban 🏙️"
+                android:textSize="18sp"
+                android:paddingVertical="8dp" />
+
+            <RadioButton
+                android:id="@+id/radioSuburban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Suburban 🏘️"
+                android:textSize="18sp"
+                android:paddingVertical="8dp" />
+
+            <RadioButton
+                android:id="@+id/radioRural"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rural 🌾"
+                android:textSize="18sp"
+                android:paddingVertical="8dp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnNextLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next ➡️"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@android:color/white"
+            android:padding="12dp" />
+
+    </LinearLayout>
+</ScrollView>
