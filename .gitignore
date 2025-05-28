@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+app/trashsensefirebase-adminsdk-fbsvc-86ae789e48.json
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -13,3 +14,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+
