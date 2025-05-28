@@ -17,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
@@ -93,9 +94,12 @@ class UsernameActivity : AppCompatActivity() {
                 if (result.resultCode == RESULT_OK) {
                     val imageBitmap = result.data?.extras?.get("data") as? android.graphics.Bitmap
                     imageBitmap?.let {
-                        profileImageView.setImageBitmap(it)
-                        // Save the bitmap to a file and get the Uri.  This is crucial for Cloudinary!
-                        imageUri = saveBitmapToTempFile(it) // Implement this function
+                        imageUri = saveBitmapToTempFile(it)
+                        Glide.with(this)
+                            .load(imageUri)
+                            .circleCrop()  // This ensures the image appears in a circular form
+                            .into(profileImageView)
+
                         Log.d("Camera", "Image URI: $imageUri")
                     }
                 } else {
@@ -111,7 +115,11 @@ class UsernameActivity : AppCompatActivity() {
                     val data: Intent? = result.data
                     data?.data?.let { uri ->
                         imageUri = uri
-                        profileImageView.setImageURI(uri)
+                        Glide.with(this)
+                            .load(imageUri)
+                            .circleCrop()
+                            .into(profileImageView)
+
                         Log.d("Gallery", "Image URI: $uri")
                     }
                 } else {

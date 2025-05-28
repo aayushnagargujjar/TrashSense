@@ -43,7 +43,7 @@
 
             <!-- Profile Button -->
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/home_pf_btn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"

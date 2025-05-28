@@ -7,8 +7,8 @@ import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.trashsense.LoginActivity
 import com.example.trashsense.R
+import com.example.trashsense.WelcomeActivity
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
@@ -78,7 +78,7 @@ class Profile_Fragment : Fragment() {
 
         logoutButton.setOnClickListener {
             auth.signOut()
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            startActivity(Intent(requireContext(), WelcomeActivity::class.java))
             requireActivity().finish()
         }
 
@@ -95,6 +95,13 @@ class Profile_Fragment : Fragment() {
             .orderBy("timestamp")
             .get()
             .addOnSuccessListener { querySnapshot ->
+                // Check if the fragment is still attached to the activity before doing UI work.
+                // 'isAdded' is a Fragment method that returns true if the fragment is currently added to its activity.
+                if (!isAdded) {
+                    // If not attached, simply return. Don't try to update UI.
+                    return@addOnSuccessListener
+                }
+
                 var index = 0
                 for (doc in querySnapshot) {
                     val co2 = doc.getDouble("co2_saved")?.toFloat() ?: 0f
@@ -119,12 +126,13 @@ class Profile_Fragment : Fragment() {
 
     private fun setupDynamicChart(chart: LineChart, label: String, entries: List<Entry>, labels: List<String>) {
         val dataSet = LineDataSet(entries, label).apply {
-            color = resources.getColor(R.color.teal_200, null)
+            color = requireContext().resources.getColor(R.color.teal_200, null)
             setDrawFilled(true)
+            setDrawValues(false)
             fillAlpha = 90
             valueTextSize = 10f
             mode = LineDataSet.Mode.CUBIC_BEZIER
-            setCircleColor(resources.getColor(R.color.teal_700, null))
+            setCircleColor(requireContext().resources.getColor(R.color.teal_700, null))
         }
 
         chart.apply {

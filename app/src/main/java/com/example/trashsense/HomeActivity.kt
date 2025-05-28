@@ -46,16 +46,16 @@ class HomeActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_home -> {
                     setCurrentFragment(homeFragment)
-                  //  val animation = AnimationUtils.loadAnimation(this, R.anim.bounce)
-                    val iconView = bottomNavigationView.findViewById<View>(item.itemId)
-                   // iconView.startAnimation(animation)
+                  // val animation = AnimationUtils.loadAnimation(this, R.anim.item_click)
+                  //  val iconView = bottomNavigationView.findViewById<View>(item.itemId)
+                    //iconView.startAnimation(animation)
                     true
                 }
                 R.id.navigation_upload -> {
                     setCurrentFragment(uploadfrag)
-                  //  val animation = AnimationUtils.loadAnimation(this, R.anim.bounce)
+                   val animation = AnimationUtils.loadAnimation(this, R.anim.item_click)
                     val iconView = bottomNavigationView.findViewById<View>(item.itemId)
-                  //  iconView.startAnimation(animation)
+                   //iconView.startAnimation(animation)
                     true
                 }
                 R.id.navigation_profile -> {
@@ -78,11 +78,15 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
-   private fun setCurrentFragment(fragment: Fragment) =
-       supportFragmentManager.beginTransaction().apply {
-           replace(R.id.flFragment,fragment)
-           commit()
-       }
+    private fun setCurrentFragment(fragment: Fragment) {
+        if (!isFinishing && !supportFragmentManager.isStateSaved) {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragment, fragment)
+                setReorderingAllowed(true)
+                commit()
+            }
+        }
+    }
 
 
 }

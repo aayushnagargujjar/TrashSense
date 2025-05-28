@@ -194,7 +194,7 @@ class Prediction : Fragment() {
             color = Color.parseColor("#42A5F5") // Light Blue
             setCircleColor(Color.parseColor("#42A5F5"))
             circleRadius = 4f
-            setDrawValues(true)
+            setDrawFilled(true)
             lineWidth = 2f
             mode = LineDataSet.Mode.CUBIC_BEZIER
             enableDashedLine(10f, 5f, 0f)

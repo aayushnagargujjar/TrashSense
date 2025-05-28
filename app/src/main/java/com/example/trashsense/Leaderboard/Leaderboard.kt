@@ -38,6 +38,13 @@ class Leaderboard : Fragment() {
 
     private fun fetchLeaderboardData() {
         db.collection("User").get().addOnSuccessListener { snapshot ->
+            // Check if the fragment is still attached to the activity before doing UI work.
+            // 'isAdded' is a Fragment method that returns true if the fragment is currently added to its activity.
+            if (!isAdded) {
+
+                return@addOnSuccessListener
+            }
+
             val users = snapshot.documents.mapNotNull { doc ->
                 val name = doc.getString("Username") ?: return@mapNotNull null
                 val avatarUrl = doc.getString("url")

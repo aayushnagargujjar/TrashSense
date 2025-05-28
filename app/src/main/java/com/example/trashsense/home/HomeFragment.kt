@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trashsense.R
+import com.example.trashsense.profile.Profile_Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -30,6 +32,7 @@ class HomeFragment : Fragment() {
         postData = ArrayList()
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,9 +41,16 @@ class HomeFragment : Fragment() {
         recyclerView = view.findViewById(R.id.homefragment_rview)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Apply layout animation
         val animationController = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_fall_down)
         recyclerView.layoutAnimation = animationController
+
+        var pfbtn =view.findViewById<ImageButton>(R.id.home_pf_btn)
+        pfbtn.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.flFragment,Profile_Fragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
         val currentUserUid = auth.currentUser?.uid
         if (currentUserUid == null) {
@@ -91,6 +101,7 @@ class HomeFragment : Fragment() {
             }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun loadPosts() {
         db.collection("Posts")
             .document("Data")
