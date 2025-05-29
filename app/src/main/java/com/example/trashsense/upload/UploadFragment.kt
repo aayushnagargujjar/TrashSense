@@ -1,8 +1,10 @@
 package com.example.trashsense.upload
 
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +17,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
@@ -36,6 +40,8 @@ class UploadFragment : Fragment() {
     private lateinit var fab: FloatingActionButton
     private lateinit var Pf_url :String
     private lateinit var pf_username :String
+    private val CAMERA_PERMISSION_REQUEST_CODE = 100
+
 
     private lateinit var cameraLauncher: ActivityResultLauncher<Intent>
     private lateinit var galleryLauncher: ActivityResultLauncher<Intent>
@@ -123,7 +129,17 @@ class UploadFragment : Fragment() {
         builder.setTitle("Choose image source")
         builder.setItems(options) { _, which ->
             when (which) {
-                0 -> openCamera()
+                0 -> if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED
+                ) {
+                    ActivityCompat.requestPermissions(
+                        requireActivity(),
+                        arrayOf(Manifest.permission.CAMERA),
+                        CAMERA_PERMISSION_REQUEST_CODE
+                    )
+                } else {
+                    openCamera()
+                }
                 1 -> openGallery()
             }
         }
@@ -254,4 +270,19 @@ class UploadFragment : Fragment() {
             null
         }
     }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera()
+            } else {
+                Toast.makeText(requireActivity(), "Camera permission is required", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 }

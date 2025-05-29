@@ -1,7 +1,9 @@
 package com.example.trashsense
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
@@ -15,6 +17,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
@@ -31,12 +35,13 @@ class UsernameActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db:FirebaseFirestore
     private lateinit var uid :String
+    private val CAMERA_PERMISSION_REQUEST_CODE = 100
     private lateinit var profileImageView: ImageView
     private lateinit var uploadButton: Button
     private lateinit var usernameEditText: EditText
     private lateinit var cameraResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var galleryResultLauncher: ActivityResultLauncher<Intent>
-    private var imageUri: Uri? = null  // To store the selected image URI
+    private var imageUri: Uri? = null
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,13 +77,24 @@ class UsernameActivity : AppCompatActivity() {
                 return  // IMPORTANT:  Return if init fails!
             }
         }
-        
+
         setupCameraResultLauncher()
         setupGalleryResultLauncher()
-
         findViewById<Button>(R.id.cameraButton).setOnClickListener {
-            takeImageFromCamera()
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.CAMERA),
+                    CAMERA_PERMISSION_REQUEST_CODE
+                )
+            } else {
+                takeImageFromCamera()
+            }
         }
+
         findViewById<Button>(R.id.galleryButton).setOnClickListener {
             selectImageFromGallery()
         }
@@ -260,6 +276,21 @@ class UsernameActivity : AppCompatActivity() {
             null
         }
     }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                takeImageFromCamera()
+            } else {
+                Toast.makeText(this, "Camera permission is required", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     companion object {
         private var cloudinaryInitialized = false
