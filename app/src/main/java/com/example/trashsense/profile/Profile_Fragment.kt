@@ -52,6 +52,10 @@ class Profile_Fragment : Fragment() {
         if (uid != null) {
             db.collection("User").document(uid).get()
                 .addOnSuccessListener { document ->
+
+                   if (!isAdded){
+                       return@addOnSuccessListener
+                   }
                     if (document.exists()) {
                         pfUsername.text = document.getString("Username") ?: "Unknown"
                         ecotext.text = (document.getDouble("Eco_Activity") ?: 0.0).toInt().toString()
@@ -96,7 +100,7 @@ class Profile_Fragment : Fragment() {
             .get()
             .addOnSuccessListener { querySnapshot ->
                 // Check if the fragment is still attached to the activity before doing UI work.
-                // 'isAdded' is a Fragment method that returns true if the fragment is currently added to its activity.
+                // imp for crash
                 if (!isAdded) {
                     // If not attached, simply return. Don't try to update UI.
                     return@addOnSuccessListener
