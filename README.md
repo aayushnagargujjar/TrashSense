@@ -5,6 +5,9 @@
 predict environmental impact, and promote sustainable habits using AI.
 The app includes a leaderboard, user profile, intelligent suggestions, and visual analytics for CO₂ and water usage based on user behavior.
 
+One Drive link --https://indianinstituteoftechnol299-my.sharepoint.com/:u:/g/personal/24je0724_iitism_ac_in/EeFeLuBby5VHtJt97nvyifsB3Mp1s4aajGk2_YgvnTPhgA?e=FanB4Y
+Google Drive link --https://drive.google.com/drive/folders/15jl706FBQJytZIhssfRmFDfmluWolGCW
+
 ## 🚀 Features
 
 ### 🌱 Motivation & Tips
