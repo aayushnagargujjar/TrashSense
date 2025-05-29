@@ -54,7 +54,7 @@ class Ai_Eco_Dashboard : Fragment() {
                     }
                     else
                     {
-                        Toast.makeText(requireActivity()," Minimum 5 data Required:you have ${documents.size()} data ",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireActivity()," Minimum 5 data Required try differnt date data:you have ${documents.size()} data ",Toast.LENGTH_SHORT).show()
                     }
 
                 }

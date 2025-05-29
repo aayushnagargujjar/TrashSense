@@ -152,7 +152,6 @@ class Transport_Calculator : Fragment() {
                     }
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.flFragment, fragment)
-                        .addToBackStack(null)
                         .commit()
 
                     Toast.makeText(requireContext(), "Savings updated!", Toast.LENGTH_SHORT).show()
@@ -179,8 +178,8 @@ class Transport_Calculator : Fragment() {
             "water_saved" to waterSaved
         )
 
-        userRef.collection("Timedata")
-            .add(timeSeriesData)
+        userRef.collection("Timedata").document()
+            .set(timeSeriesData)
             .addOnSuccessListener {
                 android.util.Log.d("TransportCalculator", "Logged time series data for transport.")
             }

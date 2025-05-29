@@ -115,7 +115,6 @@ class Replace_meal : Fragment() {
                     }}
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.flFragment,fragment)
-                    .addToBackStack(null)
                     .commit()
             }.addOnFailureListener {
                 Toast.makeText(requireContext(), "Failed to update savings.", Toast.LENGTH_SHORT).show()
@@ -128,8 +127,8 @@ class Replace_meal : Fragment() {
                 "water_saved" to waterSaved
             )
 
-            userRef.collection("Timedata")
-                .add(savingsEntry)
+            userRef.collection("Timedata").document()
+                .set(savingsEntry)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Meal savings logged!", Toast.LENGTH_SHORT).show()
                 }

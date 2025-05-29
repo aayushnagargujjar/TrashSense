@@ -1,7 +1,6 @@
 package com.example.trashsense.AI_Eco_Dashboard
 
 import android.annotation.SuppressLint
-import android.app.FragmentManager
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.example.trashsense.R
-
+import androidx.fragment.app.FragmentManager
 class ValueorData_shower : Fragment() {
 
     @SuppressLint("MissingInflatedId")
@@ -68,7 +67,6 @@ class ValueorData_shower : Fragment() {
             requireActivity().supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.flFragment, Ai_Eco_Dashboard())
-                .addToBackStack(null)
                 .commit()
         }
 

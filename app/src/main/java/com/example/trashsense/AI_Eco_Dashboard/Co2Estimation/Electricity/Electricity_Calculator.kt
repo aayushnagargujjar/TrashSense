@@ -165,7 +165,6 @@ class Electricity_Calculator : Fragment() {
                 }}
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.flFragment,fragment)
-                .addToBackStack(null)
                 .commit()
 
 
@@ -206,8 +205,8 @@ class Electricity_Calculator : Fragment() {
             "water_saved" to waterSaved
         )
 
-        userRef.collection("Timedata")
-            .add(timeSeriesData)
+        userRef.collection("Timedata").document()
+            .set(timeSeriesData)
             .addOnSuccessListener {
 
                 Log.d("ElectricityCalculator", "Logged time series data for electricity.")
