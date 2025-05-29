@@ -10,24 +10,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:paddingHorizontal="24dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="32dp"
+        android:gravity="center_horizontal">
 
+        <!-- Header Text -->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="What are your sustainability goals?"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#222222"
-            android:paddingBottom="16dp" />
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:paddingBottom="24dp" />
 
+        <!-- Goals Checkboxes -->
         <CheckBox
             android:id="@+id/goalPlastic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Reduce plastic 🚯"
             android:textSize="18sp"
-            android:paddingVertical="8dp" />
+            android:textColor="#444444"
+            android:fontFamily="@font/poppins"
+            android:paddingVertical="12dp" />
 
         <CheckBox
             android:id="@+id/goalEnergy"
@@ -35,27 +44,33 @@
             android:layout_height="wrap_content"
             android:text="Save energy 🔋"
             android:textSize="18sp"
-            android:paddingVertical="8dp" />
+            android:textColor="#444444"
+            android:fontFamily="@font/poppins"
+            android:paddingVertical="12dp" />
 
         <CheckBox
             android:id="@+id/goalCarbon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lower carbon emissions 🛻"
+            android:text="Lower carbon emissions 🌍"
             android:textSize="18sp"
-            android:paddingVertical="8dp" />
+            android:textColor="#444444"
+            android:fontFamily="@font/poppins"
+            android:paddingVertical="12dp" />
 
+        <!-- CTA Button -->
         <Button
             android:id="@+id/btnShowResults"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="Show Recommendations ✅"
             android:textAllCaps="false"
-            android:textSize="18sp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/teal_700"
+            android:textSize="19dp"
+            android:fontFamily="@font/poppins_semibold"
             android:textColor="@android:color/white"
-            android:padding="12dp" />
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="40dp"
+            android:paddingVertical="14dp" />
 
     </LinearLayout>
 </ScrollView>

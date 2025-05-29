@@ -30,7 +30,7 @@ class Profile_Fragment : Fragment() {
         db = FirebaseFirestore.getInstance()
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

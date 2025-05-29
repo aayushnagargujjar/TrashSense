@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.trashsense.R
+import com.google.android.material.card.MaterialCardView
 
 class DailyActivity : Fragment() {
 
@@ -60,7 +61,7 @@ class DailyActivity : Fragment() {
 
         // Set up click listeners
         items.forEach { (viewId, iconResId, descriptionText) ->
-            val activityItem = view.findViewById<LinearLayout>(viewId)
+            val activityItem = view.findViewById<MaterialCardView>(viewId)
             activityItem.setOnClickListener {
                 activityItem.startAnimation(scaleAnim)
 

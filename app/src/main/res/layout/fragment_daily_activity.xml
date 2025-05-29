@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,12 +16,12 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add your activity"
-            android:textSize="24sp"
-            android:layout_marginTop="40dp"
+            android:text="Add Your Activity"
+            android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="#2E7D32"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
             android:paddingBottom="8dp" />
 
         <!-- Motivational Quote -->
@@ -29,11 +31,12 @@
             android:layout_height="wrap_content"
             android:text="“Every small act makes a big impact on our planet 🌍”"
             android:textSize="16sp"
-            android:textColor="#388E3C"
+            android:textColor="#4CAF50"
             android:gravity="center"
-            android:paddingBottom="20dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp" />
+            android:padding="12dp"
+            android:background="@drawable/motivation_bg"
+            android:layout_marginBottom="24dp"
+            android:elevation="2dp" />
 
         <!-- Activity Grid -->
         <GridLayout
@@ -43,162 +46,230 @@
             android:columnCount="2"
             android:useDefaultMargins="true"
             android:alignmentMode="alignMargins"
-            android:rowOrderPreserved="false">
+            android:rowOrderPreserved="false"
+            android:layout_marginBottom="32dp">
 
-            <!-- Repeatable item layout -->
-            <!-- Item 1 -->
-            <LinearLayout
+            <!-- Activity 1: Picked Up Trash -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/DailyActivities_PickedUpTrash"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_trash"
-                    android:contentDescription="Picked up trash" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Picked up trash"
-                    android:textColor="#333"
-                    android:textSize="14sp"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
 
-            <!-- Item 2 -->
-            <LinearLayout
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_trash"
+                        android:contentDescription="Picked up trash" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Picked up trash"
+                        android:textColor="#333"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Activity 2: Helped the Animals -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/DailyActivities_HelpedTheAnimals"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_animals"
-                    android:contentDescription="Helped the animals" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Helped the animals"
-                    android:textColor="#333"
-                    android:textSize="14sp"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
 
-            <!-- Continue this pattern for the rest... -->
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_animals"
+                        android:contentDescription="Helped the animals" />
 
-            <LinearLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Helped the animals"
+                        android:textColor="#333"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Activity 3: Upcycled Renewed -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/DailyActivities_UpcycledRenewed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_upcycle"
-                    android:contentDescription="Upcycled renewed" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Upcycled renewed"
-                    android:textColor="#333"
-                    android:textSize="14sp"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
 
-            <LinearLayout
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_upcycle"
+                        android:contentDescription="Upcycled renewed" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upcycled renewed"
+                        android:textColor="#333"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Activity 4: Grown Own Groceries -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/DailyActivities_GrownOwnGroceries"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_growownngroceries"
-                    android:contentDescription="Grown own groceries" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Grown own groceries"
-                    android:textColor="#333"
-                    android:textSize="14sp"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
 
-            <LinearLayout
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_growownngroceries"
+                        android:contentDescription="Grown own groceries" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Grown own groceries"
+                        android:textColor="#333"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Activity 5: Bought Organic Product -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/DailyActivities_BoughtOrganicProduct"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_organic"
-                    android:contentDescription="Bought organic product" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bought organic product"
-                    android:textColor="#333"
-                    android:textSize="14sp"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
 
-            <LinearLayout
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_organic"
+                        android:contentDescription="Bought organic product" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bought organic product"
+                        android:textColor="#333"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Activity 6: My Own Eco Activity -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/DailyActivities_MyOwnEcoActivity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_eco"
-                    android:contentDescription="My own eco activity" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="My own eco activity"
-                    android:textColor="#333"
-                    android:textSize="14sp"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_eco"
+                        android:contentDescription="My own eco activity" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My own eco activity"
+                        android:textColor="#333"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:paddingTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
     </LinearLayout>

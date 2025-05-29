@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,98 +12,98 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Section: CO2 Leaderboard -->
+        <!-- Leaderboard Section Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="🌿 CO₂ Saved Leaderboard"
-
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp" />
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="12dp" />
 
-        <androidx.cardview.widget.CardView
+        <!-- Leaderboard Card -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            android:layout_marginBottom="24dp">
 
             <LinearLayout
+                android:id="@+id/co2_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/co2_container"
                 android:orientation="vertical"
                 android:padding="12dp">
 
                 <include layout="@layout/item_leaderboard_user" />
                 <include layout="@layout/item_leaderboard_user" />
                 <include layout="@layout/item_leaderboard_user" />
-
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <!-- Section: Water Saved -->
+        <!-- Water Leaderboard Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="💧 Water Saved Leaderboard"
-            android:textSize="18sp"
-
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp" />
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="12dp" />
 
-        <androidx.cardview.widget.CardView
+        <!-- Water Card -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            android:layout_marginBottom="24dp">
 
             <LinearLayout
+                android:id="@+id/water_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/water_container"
                 android:padding="12dp">
 
                 <include layout="@layout/item_leaderboard_user" />
                 <include layout="@layout/item_leaderboard_user" />
                 <include layout="@layout/item_leaderboard_user" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <!-- Section: Eco Activities -->
+        <!-- Eco Actions Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="🌎 Eco Activities Leaderboard"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp" />
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="12dp" />
 
-        <androidx.cardview.widget.CardView
+        <!-- Eco Actions Card -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
             android:layout_marginBottom="32dp">
 
             <LinearLayout
+                android:id="@+id/action_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/action_container"
                 android:padding="12dp">
 
                 <include layout="@layout/item_leaderboard_user" />
                 <include layout="@layout/item_leaderboard_user" />
                 <include layout="@layout/item_leaderboard_user" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </ScrollView>

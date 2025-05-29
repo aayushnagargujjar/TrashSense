@@ -1,5 +1,6 @@
 package com.example.trashsense.Leaderboard
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -61,6 +62,7 @@ class Leaderboard : Fragment() {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     private fun populateLeaderboard(container: LinearLayout, users: List<LeaderboardUser>, unit: String) {
         container.removeAllViews()
         val inflater = LayoutInflater.from(requireContext())
@@ -68,8 +70,8 @@ class Leaderboard : Fragment() {
         users.forEachIndexed { index, user ->
             val itemView = inflater.inflate(R.layout.item_leaderboard_user, container, false)
             val rankText = itemView.findViewById<TextView>(R.id.user_rank)
-            val avatarView = itemView.findViewById<ImageView>(R.id.user_avatar)
-            val nameText = itemView.findViewById<TextView>(R.id.user_name)
+            val avatarView = itemView.findViewById<ImageView>(R.id.user_avtar)
+            val nameText = itemView.findViewById<TextView>(R.id.username)
             val scoreText = itemView.findViewById<TextView>(R.id.user_score)
 
 

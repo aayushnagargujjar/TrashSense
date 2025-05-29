@@ -112,7 +112,7 @@ class UploadFragment : Fragment() {
             showImagePickerOptions()
         }
         view.findViewById<Button>(R.id.saveButton).setOnClickListener{
-            if (postText!=null){
+            if (postText.text!=null){
             uploadImageToCloudinary()}
             else{
                 Toast.makeText(requireContext() ,"Text is empty",Toast.LENGTH_SHORT).show()

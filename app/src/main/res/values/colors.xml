@@ -5,4 +5,15 @@
     <color name="purple_500">#9C27B0</color>
   <color name="teal_200">#80CBC4</color>
     <color name="teal_700">#00796B</color>
+    <color name="primary_green">#4CAF50</color> <!-- Primary eco-friendly color -->
+    <color name="accent_green">#81C784</color> <!-- Soft green accent -->
+    <color name="dark_green">#2E7D32</color> <!-- Darker variant for contrast -->
+    <color name="background_gradient_start">#E8F5E9</color> <!-- For gradient backgrounds -->
+    <color name="background_gradient_end">#C8E6C9</color>
+    <color name="text_primary">#212121</color> <!-- Rich dark gray -->
+    <color name="text_secondary">#757575</color> <!-- Subtle gray -->
+    <color name="card_shadow">#40000000</color> <!-- Semi-transparent black for shadows -->
+    <color name="eco_yellow">#FFEB3B</color> <!-- Eye-catching eco-highlight -->
+    <color name="green_700">#388E3C</color>
+
 </resources>

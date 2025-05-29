@@ -10,22 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:paddingHorizontal="24dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="32dp"
+        android:gravity="center_horizontal">
 
+        <!-- Header -->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Where do you live?"
-            android:layout_marginTop="50dp"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#222222"
-            android:paddingBottom="16dp" />
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:paddingBottom="24dp" />
 
+        <!-- Radio Buttons Group -->
         <RadioGroup
             android:id="@+id/locationGroup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/radioUrban"
@@ -33,7 +40,9 @@
                 android:layout_height="wrap_content"
                 android:text="Urban 🏙️"
                 android:textSize="18sp"
-                android:paddingVertical="8dp" />
+                android:textColor="#444444"
+                android:fontFamily="@font/poppins"
+                android:paddingVertical="12dp" />
 
             <RadioButton
                 android:id="@+id/radioSuburban"
@@ -41,7 +50,9 @@
                 android:layout_height="wrap_content"
                 android:text="Suburban 🏘️"
                 android:textSize="18sp"
-                android:paddingVertical="8dp" />
+                android:textColor="#444444"
+                android:fontFamily="@font/poppins"
+                android:paddingVertical="12dp" />
 
             <RadioButton
                 android:id="@+id/radioRural"
@@ -49,20 +60,24 @@
                 android:layout_height="wrap_content"
                 android:text="Rural 🌾"
                 android:textSize="18sp"
-                android:paddingVertical="8dp" />
+                android:textColor="#444444"
+                android:fontFamily="@font/poppins"
+                android:paddingVertical="12dp" />
         </RadioGroup>
 
+        <!-- Next Button -->
         <Button
             android:id="@+id/btnNextLocation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="Next ➡️"
             android:textAllCaps="false"
             android:textSize="18sp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/teal_700"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="40dp"
             android:textColor="@android:color/white"
-            android:padding="12dp" />
+            android:background="@drawable/rounded_button"
+            android:paddingVertical="14dp" />
 
     </LinearLayout>
 </ScrollView>
