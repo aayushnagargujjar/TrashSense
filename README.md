@@ -7,6 +7,7 @@ The app includes a leaderboard, user profile, intelligent suggestions, and visua
 ## 🚀 Features
 
 ### 🔍 Waste Identification
+![splashgif](https://github.com/user-attachments/assets/9decf0cf-e624-4f50-99ce-a41111ad5eb8)
 
 * Upload images of waste (e.g., plastic, organic, hazardous).
 * AI-based classification using a custom TensorFlow Lite model.
