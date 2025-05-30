@@ -20,7 +20,7 @@ class Profile_Fragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-
+    private  var imageUrl: String ? =""
     private lateinit var co2Chart: LineChart
     private lateinit var waterChart: LineChart
 
@@ -45,6 +45,14 @@ class Profile_Fragment : Fragment() {
         val co2text = view.findViewById<TextView>(R.id.co2reduced_number)
         val logoutButton = view.findViewById<Button>(R.id.logout_btn)
 
+        view.findViewById<ImageView>(R.id.edit_icon).setOnClickListener {
+            val bottomSheet = EditProfileBottomSheet(pfUsername.text.toString()) { newName ->
+                pfUsername.text = newName
+            }
+            bottomSheet.show(parentFragmentManager, "EditProfileBottomSheet")
+
+        }
+
         co2Chart = view.findViewById(R.id.co2_user_chart)
         waterChart = view.findViewById(R.id.water_user_chart)
 
@@ -63,7 +71,7 @@ class Profile_Fragment : Fragment() {
                         co2text.text = (document.getDouble("total_co2_savings") ?: 0.0).toInt().toString()
                         var units=(document.getDouble("total_electricity_savings") ?: 0.0).toInt().toString()
                         unit.text = "Electricity Units Saved: $units"
-                        val imageUrl = document.getString("url")
+                        imageUrl = document.getString("url")
                         if (!imageUrl.isNullOrEmpty()) {
                             Glide.with(requireContext())
                                 .load(imageUrl)
@@ -153,3 +161,4 @@ class Profile_Fragment : Fragment() {
         }
     }
 }
+

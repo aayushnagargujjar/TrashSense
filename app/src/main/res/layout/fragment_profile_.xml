@@ -10,24 +10,43 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:padding="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profile_pic"
+            <!-- Profile picture with overlay edit icon -->
+            <FrameLayout
+                android:id="@+id/profile_image_container"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="24dp"
-                android:src="@drawable/account_circle_24px"
-                android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/CircleImageView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profile_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/account_circle_24px"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+                <ImageView
+                    android:id="@+id/edit_icon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="4dp"
+                    android:padding="6dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_edit"
+                    android:contentDescription="Edit profile"
+                    app:tint="@color/black" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/pf_username"
@@ -37,10 +56,11 @@
                 android:textAlignment="center"
                 style="@style/TextAppearance.Material3.HeadlineSmall"
                 android:layout_marginTop="12dp"
-                app:layout_constraintTop_toBottomOf="@id/profile_pic"
+                app:layout_constraintTop_toBottomOf="@id/profile_image_container"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <!-- Stats Card -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/stats_card"
                 android:layout_width="0dp"
@@ -61,6 +81,7 @@
                     android:gravity="center"
                     android:padding="16dp">
 
+                    <!-- Eco actions -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -86,6 +107,7 @@
                             android:textSize="16sp" />
                     </LinearLayout>
 
+                    <!-- Water saved -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -111,6 +133,7 @@
                             android:textSize="16sp" />
                     </LinearLayout>
 
+                    <!-- CO2 saved -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -138,6 +161,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Units Saved Card -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/units_saved_card"
                 android:layout_width="0dp"
@@ -176,6 +200,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Charts -->
             <TextView
                 android:id="@+id/co2_forecast_label"
                 android:layout_width="wrap_content"
@@ -212,17 +237,17 @@
                 android:layout_width="0dp"
                 android:layout_height="250dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="16dp"
                 app:layout_constraintTop_toBottomOf="@id/water_forecast_label"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <!-- Logout button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="32dp"
                 android:text="Logout"
                 android:textColor="@android:color/white"
                 android:backgroundTint="?attr/colorPrimary"
@@ -232,7 +257,6 @@
                 app:layout_constraintTop_toBottomOf="@id/water_user_chart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </FrameLayout>
