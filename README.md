@@ -10,8 +10,8 @@ Sure! Here's the corrected and properly formatted version of the **Download Now*
 
 📥 **Download Now**
 
-* ▶️ **Google Drive** – [https://lnkd.in/gVWf2MFr](https://lnkd.in/gVWf2MFr)
-* ▶️ **OneDrive** – [https://lnkd.in/ggCB4amQ](https://lnkd.in/ggCB4amQ)
+* ▶️ **One Drive** – [https://lnkd.in/gVWf2MFr](https://lnkd.in/gVWf2MFr)
+* ▶️ **Google eDrive** – [https://lnkd.in/ggCB4amQ](https://lnkd.in/ggCB4amQ)
 
 
 ## 🚀 What’s New
