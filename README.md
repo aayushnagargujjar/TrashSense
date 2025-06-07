@@ -8,8 +8,8 @@ It features a user profile, eco leaderboard, personalized sustainability tips, a
 
 📥 **Download Now**
 
-* 🔗 [OneDrive APK](https://indianinstituteoftechnol299-my.sharepoint.com/:u:/g/personal/24je0724_iitism_ac_in/EeFeLuBby5VHtJt97nvyifsB3Mp1s4aajGk2_YgvnTPhgA?e=FanB4Y)
-* 🔗 [Google Drive APK](https://drive.google.com/drive/folders/15jl706FBQJytZIhssfRmFDfmluWolGCW)
+* 🔗 [OneDrive APK]([https://indianinstituteoftechnol299-my.sharepoint.com/:u:/g/personal/24je0724_iitism_ac_in/EeFeLuBby5VHtJt97nvyifsB3Mp1s4aajGk2_YgvnTPhgA?e=FanB4Y](https://indianinstituteoftechnol299-my.sharepoint.com/personal/24je0724_iitism_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2F24je0724%5Fiitism%5Fac%5Fin%2FDocuments%2Fapp%20d%2FTrash%20Sense%2FApk&ga=1))
+* 🔗 [Google Drive APK]([https://drive.google.com/drive/folders/15jl706FBQJytZIhssfRmFDfmluWolGCW](https://drive.google.com/drive/folders/15jl706FBQJytZIhssfRmFDfmluWolGCW))
 
 ---
 
