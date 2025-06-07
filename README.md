@@ -7,13 +7,11 @@
 It features a user profile, eco leaderboard, personalized sustainability tips, and analytics dashboards for CO₂ and water usage.
 Sure! Here's the corrected and properly formatted version of the **Download Now** section:
 
----
 
 📥 **Download Now**
 
 * 🔗 [OneDrive APK](https://indianinstituteoftechnol299-my.sharepoint.com/:u:/g/personal/24je0724_iitism_ac_in/EeFeLuBby5VHtJt97nvyifsB3Mp1s4aajGk2_YgvnTPhgA?e=FanB4Y)
-* 🔗 [Google Drive APK](https://drive.google.com/drive/folders/15jl706FBQJytZIhssfRmFDfmluWolGCW)
-
+* 🔗 [Google Drive APK](https://lnkd.in/gVWf2MFr)
 
 
 ## 🚀 What’s New
