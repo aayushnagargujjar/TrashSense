@@ -1,110 +1,128 @@
-🗑️ TrashSense
 
+## 🗑️ TrashSense
 
-TrashSense is a smart Android application that empowers users to classify waste, track their environmental impact, and build sustainable habits using AI + Firebase.
+![splashgif](https://github.com/user-attachments/assets/9decf0cf-e624-4f50-99ce-a41111ad5eb8)
+
+**TrashSense** is a smart Android application that empowers users to classify waste, track their environmental impact, and build sustainable habits using AI + Firebase.
 It features a user profile, eco leaderboard, personalized sustainability tips, and analytics dashboards for CO₂ and water usage.
 
-📥 Download Now
+📥 **Download Now**
 
-🔗 OneDrive APK
+* 🔗 [OneDrive APK](https://indianinstituteoftechnol299-my.sharepoint.com/:u:/g/personal/24je0724_iitism_ac_in/EeFeLuBby5VHtJt97nvyifsB3Mp1s4aajGk2_YgvnTPhgA?e=FanB4Y)
+* 🔗 [Google Drive APK](https://drive.google.com/drive/folders/15jl706FBQJytZIhssfRmFDfmluWolGCW)
 
-🔗 Google Drive APK
+---
 
-🚀 What’s New
-🆕 v1.1.0 Updates
-✏️ Username Editing: Now users can edit their display name directly from the profile screen.
+## 🚀 What’s New
 
-🎨 UI/UX Enhancements: Improved layout consistency and smoother user experience.
+### 🆕 v1.1.0 Updates
 
-🐛 Bug Fixes: Faster image uploads, better error handling, and smoother transitions.
+* ✏️ **Username Editing**: Now users can edit their display name directly from the profile screen.
+* 🎨 **UI/UX Enhancements**: Improved layout consistency and smoother user experience.
+* 🐛 **Bug Fixes**: Faster image uploads, better error handling, and smoother transitions.
 
-📱 App Features
-🌱 Sustainability Tips
-Personalized eco-friendly tips based on user behavior
+---
 
-Stored and fetched dynamically from Firebase Firestore
+## 📱 App Features
 
-🧠 AI Eco Dashboard
-🔍 Waste Classification
-Upload or capture waste images via Floating Action Button
+### 🌱 Sustainability Tips
 
-Image classified using custom TFLite model
+* Personalized eco-friendly tips based on user behavior
+* Stored and fetched dynamically from **Firebase Firestore**
 
-Labels mapped into: Recyclable, Organic, Hazardous
+### 🧠 AI Eco Dashboard
 
-📅 Daily Logging & Onboarding
-Users complete a 3-step flow: meal type → food category → item
+#### 🔍 Waste Classification
 
-Structured fragments enable smooth data collection
+* Upload or capture waste images via Floating Action Button
+* Image classified using custom **TFLite model**
+* Labels mapped into: **Recyclable**, **Organic**, **Hazardous**
 
-📈 CO₂ & Water Impact Forecast
-Prediction powered by Flask + Prophet (deployed on Render)
+#### 📅 Daily Logging & Onboarding
 
-Forecast personalized using Firebase UID
+* Users complete a 3-step flow: meal type → food category → item
+* Structured fragments enable smooth data collection
 
-Visual analytics using MPAndroidChart
+#### 📈 CO₂ & Water Impact Forecast
 
-👤 Profile & Eco-Leaderboard
-Firebase Auth for login (email/password)
+* Prediction powered by **Flask + Prophet** (deployed on **Render**)
+* Forecast personalized using Firebase UID
+* Visual analytics using **MPAndroidChart**
 
-Profile picture upload to Cloudinary
+### 👤 Profile & Eco-Leaderboard
 
-Username editing, logout, and session handling
+* Firebase Auth for login (email/password)
+* Profile picture upload to **Cloudinary**
+* **Username editing**, logout, and session handling
+* Leaderboard to track and compare eco performance
 
-Leaderboard to track and compare eco performance
+![IMG\_20250529\_123506](https://github.com/user-attachments/assets/ba935b68-6e6e-485e-a5a9-9cde9b2f8b7a)
 
+---
 
+## 📦 Tech Stack
 
-📦 Tech Stack
-Layer	Technology
-Language	Kotlin
-UI/UX	XML, BottomNavigation
-ML	TensorFlow Lite (TFLite Model)
-Backend API	Flask + Prophet + Firebase
-Database	Firebase Firestore
-Auth	Firebase Authentication
-API Hosting	Render
-Visualization	MPAndroidChart
+| Layer         | Technology                     |
+| ------------- | ------------------------------ |
+| Language      | Kotlin                         |
+| UI/UX         | XML, BottomNavigation          |
+| ML            | TensorFlow Lite (TFLite Model) |
+| Backend API   | Flask + Prophet + Firebase     |
+| Database      | Firebase Firestore             |
+| Auth          | Firebase Authentication        |
+| API Hosting   | Render                         |
+| Visualization | MPAndroidChart                 |
 
-🔧 Installation
-bash
-Copy
-Edit
+---
+
+## 🔧 Installation
+
+```bash
 git clone https://github.com/aayushnagargujjar/TrashSense.git
 cd TrashSense
-Open the project in Android Studio
+```
 
-Add your google-services.json to the app/ directory
+1. Open the project in **Android Studio**
+2. Add your `google-services.json` to the `app/` directory
+3. Sync Gradle and run on emulator/device
 
-Sync Gradle and run on emulator/device
+---
 
-🌐 Backend Setup
-Deploy the Flask server with render.yaml on Render
+## 🌐 Backend Setup
 
-Install required packages:
+1. Deploy the Flask server with `render.yaml` on [Render](https://render.com)
+2. Install required packages:
 
-bash
-Copy
-Edit
-pip install flask prophet firebase-admin gunicorn
-Add a Render cron job for daily forecast updates
+   ```bash
+   pip install flask prophet firebase-admin gunicorn
+   ```
+3. Add a Render cron job for daily forecast updates
 
-🤖 Machine Learning
-Custom TFLite model trained on waste categories:
-Metal, Glass, Paper, Trash, Plastic, Battery, etc.
+---
 
-Image classification triggers label mapping and updates user logs in Firestore
+## 🤖 Machine Learning
 
-🧪 Testing
-Tested on Android API levels 24 to 34
+* Custom TFLite model trained on waste categories:
+  `Metal, Glass, Paper, Trash, Plastic, Battery, etc.`
+* Image classification triggers label mapping and updates user logs in Firestore
 
-Image upload, classification, prediction response, and Firestore integration
+---
 
-Edge case handling: no internet, null predictions, long loading
+## 🧪 Testing
 
-👨‍💻 Developed By
-Aayush Nagar Gujjar
-🔗 GitHub Profile
+* Tested on Android API levels 24 to 34
+* Image upload, classification, prediction response, and Firestore integration
+* Edge case handling: no internet, null predictions, long loading
 
-💡 Contribute or Collaborate?
+---
+
+## 👨‍💻 Developed By
+
+**Aayush Nagar Gujjar**
+🔗 [GitHub Profile](https://github.com/aayushnagargujjar)
+
+---
+
+## 💡 Contribute or Collaborate?
+
 If you're passionate about climate tech or mobile ML apps — feel free to fork, star, or open a PR!
