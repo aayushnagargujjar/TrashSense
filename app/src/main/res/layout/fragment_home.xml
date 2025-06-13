@@ -42,8 +42,6 @@
                     app:shapeAppearanceOverlay="@style/CircleImageView" />
             </com.google.android.material.card.MaterialCardView>
 
-
-            <!-- Motivational Title -->
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="0dp"
