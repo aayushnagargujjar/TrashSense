@@ -21,7 +21,11 @@ Sure! Here's the corrected and properly formatted version of the **Download Now*
 * ✏️ **Username Editing**: Now users can edit their display name directly from the profile screen.
 * 🎨 **UI/UX Enhancements**: Improved layout consistency and smoother user experience.
 * 🐛 **Bug Fixes**: Faster image uploads, better error handling, and smoother transitions.
-
+  
+### 🆕 v1.2.0 Updates
+* Dark and Light Mode - for user good experience
+* Welcome page added with UI improvements
+* 🐛 **Bug Fixes**: Faster image uploads, better error handling, and smoother transitions.
 ---
 
 ## 📱 App Features
