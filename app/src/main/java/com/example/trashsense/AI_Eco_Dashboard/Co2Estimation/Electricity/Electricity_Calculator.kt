@@ -186,10 +186,10 @@ class Electricity_Calculator : Fragment() {
             electricityResultTextView.text = resultText
             electricityResultTextView.visibility = View.VISIBLE
 
-            Toast.makeText(requireContext(), "Savings updated!", Toast.LENGTH_SHORT).show()
-            logTimeSeriesData(co2SavedGrams.toInt(), waterSavedLiters ) // Pass waterSavedLiters explicitly
+            context?.let { Toast.makeText(it, "Savings updated!", Toast.LENGTH_SHORT).show()}
+            logTimeSeriesData(co2SavedGrams.toInt(), waterSavedLiters )
         }.addOnFailureListener { e ->
-            Toast.makeText(requireContext(), "Failed to update savings: ${e.message}", Toast.LENGTH_LONG).show()
+            context?.let { Toast.makeText(it, "Failed to update savings: ${e.message}", Toast.LENGTH_LONG).show()}
             android.util.Log.e("ElectricityCalculator", "Failed to update user savings", e)
         }
     }
@@ -212,7 +212,8 @@ class Electricity_Calculator : Fragment() {
                 Log.d("ElectricityCalculator", "Logged time series data for electricity.")
             }
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Failed to log time-series data.", Toast.LENGTH_SHORT).show()
+
+                context?.let { Toast.makeText(it, "Failed to log time-series data.", Toast.LENGTH_SHORT).show()}
                 Log.e("ElectricityCalculator", "Failed to log time series data", e)
             }
     }

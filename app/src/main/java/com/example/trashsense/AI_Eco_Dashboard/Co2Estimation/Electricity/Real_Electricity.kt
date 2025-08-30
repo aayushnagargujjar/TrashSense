@@ -62,7 +62,6 @@ class Real_Electricity : Fragment() {
                                  .supportFragmentManager
                                  .beginTransaction()
                                 .replace(R.id.flFragment, fragment)
-                                .addToBackStack(null)
                                 .commit()
                         }
                     }

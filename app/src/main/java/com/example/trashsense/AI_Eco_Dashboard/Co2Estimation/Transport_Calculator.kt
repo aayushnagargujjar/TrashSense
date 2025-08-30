@@ -36,7 +36,6 @@ class Transport_Calculator : Fragment() {
         arguments?.let {
             realT = it.getString("realT")
             insteadT = it.getString("insteadT")
-
         }
 
         auth = FirebaseAuth.getInstance()
@@ -50,7 +49,6 @@ class Transport_Calculator : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_transport__calculator, container, false)
 
-
         realTTextView = view.findViewById(R.id.realTTextView)
         insteadTTextView = view.findViewById(R.id.insteadTTextView)
         distanceEditText = view.findViewById(R.id.distanceEditText)
@@ -58,20 +56,20 @@ class Transport_Calculator : Fragment() {
         realTransportIcon = view.findViewById(R.id.real_t_iconid)
         insteadTransportIcon = view.findViewById(R.id.instead_t_iconid)
 
-
-        realTTextView.text = "$realT"
-        insteadTTextView.text = "$insteadT"
+        realTTextView.text = realT
+        insteadTTextView.text = insteadT
 
         setTransportIcon(realTransportIcon, realT)
         setTransportIcon(insteadTransportIcon, insteadT)
-
 
         checksaving_tBtn.setOnClickListener {
             val kmStr = distanceEditText.text.toString()
             val distance = kmStr.toFloatOrNull()
 
             if (distance == null || distance <= 0) {
-                Toast.makeText(requireContext(), "Enter a valid distance.", Toast.LENGTH_SHORT).show()
+                context?.let { safeContext ->
+                    Toast.makeText(safeContext, "Enter a valid distance.", Toast.LENGTH_SHORT).show()
+                }
                 return@setOnClickListener
             }
 
@@ -79,7 +77,9 @@ class Transport_Calculator : Fragment() {
             val insteadValues = getTransportValues(insteadT)
 
             if (realValues == null || insteadValues == null) {
-                Toast.makeText(requireContext(), "Invalid transport choices.", Toast.LENGTH_SHORT).show()
+                context?.let { safeContext ->
+                    Toast.makeText(safeContext, "Invalid transport choices.", Toast.LENGTH_SHORT).show()
+                }
                 return@setOnClickListener
             }
 
@@ -94,7 +94,6 @@ class Transport_Calculator : Fragment() {
 
         return view
     }
-
 
     private fun setTransportIcon(imageView: ImageView, transportName: String?) {
         val iconResId = when (transportName?.lowercase()?.replace(" ", "")) {
@@ -123,7 +122,9 @@ class Transport_Calculator : Fragment() {
 
     private fun updateUserSavings(co2Saved: Int, waterSaved: Float) {
         val userId = auth.currentUser?.uid ?: run {
-            Toast.makeText(requireContext(), "User not logged in.", Toast.LENGTH_SHORT).show()
+            context?.let { safeContext ->
+                Toast.makeText(safeContext, "User not logged in.", Toast.LENGTH_SHORT).show()
+            }
             return
         }
         val userRef = fb.collection("User").document(userId)
@@ -145,25 +146,35 @@ class Transport_Calculator : Fragment() {
                     distanceEditText.text.clear()
 
                     val fragment = ValueorData_shower().apply {
-                        arguments  = Bundle().apply {
+                        arguments = Bundle().apply {
                             putFloat("co2_value", co2Saved.toFloat())
                             putFloat("water_value", waterSaved)
                         }
                     }
-                    requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.flFragment, fragment)
-                        .commit()
 
-                    Toast.makeText(requireContext(), "Savings updated!", Toast.LENGTH_SHORT).show()
+
+                    if (isAdded) {
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.flFragment, fragment)
+                            .commit()
+
+                        context?.let { safeContext ->
+                            Toast.makeText(safeContext, "Savings updated!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
 
                     logTimeSeriesData(co2Saved, waterSaved)
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(requireContext(), "Failed to update database: ${e.message}", Toast.LENGTH_SHORT).show()
+                    context?.let { safeContext ->
+                        Toast.makeText(safeContext, "Failed to update database: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
                     android.util.Log.e("TransportCalculator", "Failed to update user savings", e)
                 }
         }.addOnFailureListener { e ->
-            Toast.makeText(requireContext(), "Failed to fetch user data: ${e.message}", Toast.LENGTH_SHORT).show()
+            context?.let { safeContext ->
+                Toast.makeText(safeContext, "Failed to fetch user data: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
             android.util.Log.e("TransportCalculator", "Failed to fetch user data", e)
         }
     }
@@ -184,7 +195,9 @@ class Transport_Calculator : Fragment() {
                 android.util.Log.d("TransportCalculator", "Logged time series data for transport.")
             }
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Failed to log time-series data.", Toast.LENGTH_SHORT).show()
+                context?.let { safeContext ->
+                    Toast.makeText(safeContext, "Failed to log time-series data.", Toast.LENGTH_SHORT).show()
+                }
                 android.util.Log.e("TransportCalculator", "Failed to log time series data", e)
             }
     }

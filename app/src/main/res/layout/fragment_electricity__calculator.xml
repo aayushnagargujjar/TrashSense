@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/main"
     android:padding="24dp"
-    android:background="#FAFAFA"
+    android:background="@drawable/gradient_background"
     tools:context=".AI_Eco_Dashboard.Co2Estimation.Electricity.Electricity_Calculator">
 
     <LinearLayout

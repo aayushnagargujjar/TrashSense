@@ -64,7 +64,6 @@ class ValueorData_shower : Fragment() {
 
 
         view.findViewById<Button>(R.id.continuebtn).setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.flFragment, Ai_Eco_Dashboard())
                 .commit()

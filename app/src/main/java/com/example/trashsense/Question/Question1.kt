@@ -41,6 +41,7 @@ class Question1 : AppCompatActivity() {
             val intent = Intent(this, Question2::class.java)
             intent.putStringArrayListExtra("interests", ArrayList(selectedOptions))
             startActivity(intent)
+            finish()
         }
     }
 }

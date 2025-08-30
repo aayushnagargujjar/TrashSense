@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    android:background="#FAFAFA"
+    android:background="@drawable/gradient_background"
     tools:context=".AI_Eco_Dashboard.Co2Estimation.Transport_Calculator">
 
     <LinearLayout

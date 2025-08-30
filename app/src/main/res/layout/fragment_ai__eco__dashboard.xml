@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@drawable/gradient_background">
 
     <!-- Top App Bar -->
     <com.google.android.material.appbar.MaterialToolbar
@@ -92,6 +92,7 @@
                         android:id="@+id/btnCo2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/green_700"
                         android:text="Try Now" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -144,6 +145,7 @@
                     <Button
                         android:id="@+id/btnSortWaste"
                         android:layout_width="wrap_content"
+                        android:backgroundTint="@color/green_700"
                         android:layout_height="wrap_content"
                         android:text="Scan" />
                 </LinearLayout>
@@ -198,6 +200,7 @@
                         android:id="@+id/btnForecast"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/green_700"
                         android:text="Forecast" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

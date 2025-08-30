@@ -4,16 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:id="@+id/main"
+    android:background="@color/accent_green">
 
     <LinearLayout
-        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
+
+        android:layout_marginTop="0dp"
         android:paddingHorizontal="24dp"
-        android:paddingTop="48dp"
+        android:paddingTop="28dp"
         android:paddingBottom="32dp"
         android:gravity="center_horizontal">
 
@@ -26,7 +27,7 @@
             android:gravity="center"
             android:paddingBottom="24dp"
             android:text="What are your top sustainability interests?"
-            android:textColor="#222222"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -36,9 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:paddingVertical="12dp"
+            android:paddingVertical="18dp"
             android:text="Gardening 🌱"
-            android:textColor="#444444"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <CheckBox
@@ -47,7 +48,7 @@
             android:layout_height="wrap_content"
             android:text="Vegan lifestyle 🌿"
             android:textSize="18sp"
-            android:textColor="#444444"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:paddingVertical="12dp" />
 
@@ -57,7 +58,7 @@
             android:layout_height="wrap_content"
             android:text="Clean transport 🚲"
             android:textSize="18sp"
-            android:textColor="#444444"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:paddingVertical="12dp" />
 
@@ -67,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Zero waste ♻️"
             android:textSize="18sp"
-            android:textColor="#444444"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:paddingVertical="12dp" />
 
@@ -75,12 +76,11 @@
         <Button
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="#4468BF"
+
+            android:backgroundTint="@color/dark_green"
             android:fontFamily="@font/poppins_semibold"
-            android:paddingVertical="14dp"
             android:text="Next ➡️"
             android:textAllCaps="false"
             android:textColor="@android:color/white"

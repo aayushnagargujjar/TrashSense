@@ -106,7 +106,7 @@
                 android:layout_width="60dp"
                 android:layout_height="56dp"
                 android:pointerIcon="crosshair"
-                android:backgroundTint="#C3F8BB"
+                android:backgroundTint="@color/background_gradient_end"
                 android:src="@drawable/ic_profile"
                 app:layout_constraintBottom_toTopOf="@+id/textView4"
                 app:layout_constraintEnd_toEndOf="parent"

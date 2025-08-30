@@ -99,7 +99,7 @@ class UploadFragment : Fragment() {
 
         postImage = view.findViewById(R.id.post_image)
         postText = view.findViewById(R.id.Post_text)
-        fab = view.findViewById(R.id.floatingActionButton)
+        fab = view.findViewById(R.id.fabUpload)
         fab.imageTintList = null
         val descriptiontext = arguments?.getString("descriptiontext") ?: "Default Hint"
         val imageid = arguments?.getInt("icon_id") ?: R.drawable.img

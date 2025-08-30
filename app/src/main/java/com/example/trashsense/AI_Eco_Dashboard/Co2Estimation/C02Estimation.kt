@@ -35,7 +35,6 @@ class C02Estimation : Fragment() {
                     val tFragment = Choose_Transport()
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.flFragment, tFragment)
-                        .addToBackStack(null)
                         .commit()
                 }
 
@@ -55,7 +54,7 @@ class C02Estimation : Fragment() {
                     val tFragment = MealFragment()
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.flFragment, tFragment)
-                        .addToBackStack(null)
+
                         .commit()
                 }
 
@@ -73,7 +72,7 @@ class C02Estimation : Fragment() {
                   val tFragment = Real_Electricity()
                   requireActivity().supportFragmentManager.beginTransaction()
                       .replace(R.id.flFragment, tFragment)
-                      .addToBackStack(null)
+
                       .commit()
               }
 

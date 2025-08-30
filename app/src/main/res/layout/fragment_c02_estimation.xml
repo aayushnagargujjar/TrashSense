@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="24dp"
-    android:background="#FFFFFF">
+    android:background="@drawable/gradient_background">
 
     <TextView
         android:id="@+id/titleText"
@@ -34,7 +34,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
-        android:background="@drawable/rounded_box"
+        android:background="@drawable/card_gradient_bg"
         android:layout_marginBottom="24dp">
 
         <ImageView
@@ -62,7 +62,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
-        android:background="@drawable/rounded_box"
+        android:background="@drawable/card_gradient_bg"
         android:layout_marginBottom="24dp">
 
         <ImageView
@@ -90,7 +90,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
-        android:background="@drawable/rounded_box">
+        android:background="@drawable/card_gradient_bg">
 
         <ImageView
             android:id="@+id/electricityImage"

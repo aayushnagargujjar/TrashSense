@@ -3,16 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@color/accent_green">
 
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
-        android:paddingHorizontal="24dp"
-        android:paddingTop="48dp"
+        android:layout_marginTop="0dp"
+        android:paddingHorizontal="44dp"
+        android:paddingTop="38dp"
         android:paddingBottom="32dp"
         android:gravity="center_horizontal">
 
@@ -31,7 +31,7 @@
         <!-- Radio Buttons Group -->
         <RadioGroup
             android:id="@+id/locationGroup"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -69,16 +69,16 @@
         <!-- Next Button -->
         <Button
             android:id="@+id/btnNextLocation"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:text="Next ➡️"
             android:textAllCaps="false"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_semibold"
             android:layout_marginTop="40dp"
             android:textColor="@android:color/white"
-            android:background="@drawable/rounded_button"
-            android:paddingVertical="14dp" />
+            android:backgroundTint="@color/dark_green"
+             />
 
     </LinearLayout>
 </ScrollView>

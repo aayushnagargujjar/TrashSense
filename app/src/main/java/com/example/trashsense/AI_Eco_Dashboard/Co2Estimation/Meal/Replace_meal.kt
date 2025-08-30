@@ -80,12 +80,18 @@ class Replace_meal : Fragment() {
         val insteadValues = getMealValues(insteadMeal)
 
         if (realValues == null || insteadValues == null) {
-            Toast.makeText(requireContext(), "Invalid meal selection.", Toast.LENGTH_SHORT).show()
+            context?.let { Toast.makeText(it, "Invalid meal selection.", Toast.LENGTH_SHORT).show() }
             return
         }
 
-        val co2Saved = -realValues.first +insteadValues.first
-        val waterSaved = -realValues.second+insteadValues.second
+
+        val co2Saved = -realValues.first + insteadValues.first
+        val waterSaved = -realValues.second + insteadValues.second
+
+        if (co2Saved <= 0 && waterSaved <= 0) {
+            context?.let { Toast.makeText(it, "No savings with this replacement.", Toast.LENGTH_SHORT).show() }
+            return
+        }
 
         val userId = auth.currentUser?.uid ?: return
         val userRef = db.collection("User").document(userId)
@@ -97,44 +103,54 @@ class Replace_meal : Fragment() {
             val updatedCO2 = existingCO2 + co2Saved
             val updatedWater = existingWater + waterSaved
 
-            userRef.set(
-                mapOf(
-                    "total_co2_savings" to updatedCO2,
-                    "total_water_savings" to updatedWater
-                ), SetOptions.merge()
-            ).addOnSuccessListener {
-                Toast.makeText(
-                    requireContext(),
-                    "You saved $co2Saved g CO₂ and %.2f L water!".format(waterSaved),
-                    Toast.LENGTH_LONG
-                ).show()
-                val fragment = ValueorData_shower().apply {
-                    arguments  = Bundle().apply {
-                        putFloat("co2_value",co2Saved.toFloat())
-                        putFloat("water_value",waterSaved)
-                    }}
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.flFragment,fragment)
-                    .commit()
-            }.addOnFailureListener {
-                Toast.makeText(requireContext(), "Failed to update savings.", Toast.LENGTH_SHORT).show()
-            }
-
-
-            val savingsEntry = mapOf(
-                "timestamp" to System.currentTimeMillis(),
-                "co2_saved" to co2Saved,
-                "water_saved" to waterSaved
+            val updateData = mapOf(
+                "total_co2_savings" to updatedCO2,
+                "total_water_savings" to updatedWater
             )
 
-            userRef.collection("Timedata").document()
-                .set(savingsEntry)
+            userRef.set(updateData, SetOptions.merge())
                 .addOnSuccessListener {
-                    Toast.makeText(requireContext(), "Meal savings logged!", Toast.LENGTH_SHORT).show()
+                    context?.let { ctx ->
+                        Toast.makeText(
+                            ctx,
+                            "You saved $co2Saved g CO₂ and %.2f L water!".format(waterSaved),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                    val fragment = ValueorData_shower().apply {
+                        arguments = Bundle().apply {
+                            putFloat("co2_value", co2Saved.toFloat())
+                            putFloat("water_value", waterSaved)
+                        }
+                    }
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, fragment)
+                        .commit()
+
+                    logMealSavings(userRef, co2Saved, waterSaved)
                 }
                 .addOnFailureListener {
-                    Toast.makeText(requireContext(), "Failed to log meal savings.", Toast.LENGTH_SHORT).show()
+                    context?.let { ctx -> Toast.makeText(ctx, "Failed to update savings.", Toast.LENGTH_SHORT).show() }
                 }
         }
+    }
+
+    private fun logMealSavings(userRef: com.google.firebase.firestore.DocumentReference, co2Saved: Int, waterSaved: Float) {
+        val savingsEntry = mapOf(
+            "timestamp" to System.currentTimeMillis(),
+            "co2_saved" to co2Saved,
+            "water_saved" to waterSaved
+        )
+
+        userRef.collection("Timedata").document()
+            .set(savingsEntry)
+            .addOnSuccessListener {
+                android.util.Log.d("ReplaceMeal", "Meal savings logged!")
+            }
+            .addOnFailureListener { e ->
+                context?.let { ctx -> Toast.makeText(ctx, "Failed to log meal savings.", Toast.LENGTH_SHORT).show() }
+                android.util.Log.e("ReplaceMeal", "Error logging savings", e)
+            }
     }
 }

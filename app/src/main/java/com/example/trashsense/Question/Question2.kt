@@ -51,6 +51,7 @@ class Question2 : AppCompatActivity() {
             intent.putStringArrayListExtra("interests", interests)
             intent.putExtra("location", location)
             startActivity(intent)
+            finish()
         }
     }
 }

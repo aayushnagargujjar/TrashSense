@@ -3,18 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@color/accent_green">
+
 
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
-        android:paddingHorizontal="24dp"
-        android:paddingTop="48dp"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="44dp"
+        android:paddingTop="8dp"
         android:paddingBottom="32dp"
         android:gravity="center_horizontal">
+        <View
+            android:background="@color/dark_green"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
 
         <!-- Header Text -->
         <TextView
@@ -23,7 +30,7 @@
             android:text="What are your sustainability goals?"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#222222"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
             android:paddingBottom="24dp" />
@@ -31,47 +38,47 @@
         <!-- Goals Checkboxes -->
         <CheckBox
             android:id="@+id/goalPlastic"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Reduce plastic 🚯"
             android:textSize="18sp"
-            android:textColor="#444444"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:paddingVertical="12dp" />
 
         <CheckBox
             android:id="@+id/goalEnergy"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Save energy 🔋"
             android:textSize="18sp"
-            android:textColor="#444444"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:paddingVertical="12dp" />
 
         <CheckBox
             android:id="@+id/goalCarbon"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Lower carbon emissions 🌍"
             android:textSize="18sp"
-            android:textColor="#444444"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:paddingVertical="12dp" />
 
         <!-- CTA Button -->
         <Button
             android:id="@+id/btnShowResults"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:text="Show Recommendations ✅"
             android:textAllCaps="false"
-            android:textSize="19dp"
+            android:textSize="14dp"
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@android:color/white"
-            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/dark_green"
             android:layout_marginTop="40dp"
-            android:paddingVertical="14dp" />
+            />
 
     </LinearLayout>
 </ScrollView>

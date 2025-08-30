@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@drawable/gradient_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -27,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
+            android:backgroundTint="@color/background_gradient_start"
             app:cardElevation="6dp"
             android:layout_marginBottom="24dp">
 
@@ -58,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
+            android:backgroundTint="@color/background_gradient_start"
             app:cardElevation="6dp"
             android:layout_marginBottom="24dp">
 
@@ -90,6 +93,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
             app:cardElevation="6dp"
+            android:backgroundTint="@color/background_gradient_start"
             android:layout_marginBottom="32dp">
 
             <LinearLayout

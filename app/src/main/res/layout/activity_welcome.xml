@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@color/background_gradient_end">
 
     <LinearLayout
         android:id="@+id/container"
@@ -51,7 +51,7 @@
             android:text="Sign Up"
             android:textColor="#131613"
             android:textStyle="bold"
-            android:backgroundTint="#b8e4b8" />
+            android:backgroundTint="@color/green_success" />
 
         <Button
             android:id="@+id/btnSignin_welcome"
@@ -60,7 +60,7 @@
             android:text="Sign In"
             android:textColor="#131613"
             android:textStyle="bold"
-            android:backgroundTint="#E2E7E2"
+            android:backgroundTint="@color/md_theme_light_surface"
             android:layout_marginTop="12dp" />
 
 

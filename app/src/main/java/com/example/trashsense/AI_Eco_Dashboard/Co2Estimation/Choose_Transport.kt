@@ -58,7 +58,7 @@ class Choose_Transport : Fragment() {
 
                             requireActivity().supportFragmentManager.beginTransaction()
                                 .replace(R.id.flFragment, fragment)
-                                .addToBackStack(null)
+
                                 .commit()
                         }
                     }

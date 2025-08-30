@@ -1,5 +1,6 @@
 package com.example.trashsense.AI_Eco_Dashboard
 
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.example.trashsense.AI_Eco_Dashboard.wastesorting.Waste_Sortingfragmen
 import com.example.trashsense.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 
 class Ai_Eco_Dashboard : Fragment() {
@@ -34,7 +36,7 @@ class Ai_Eco_Dashboard : Fragment() {
         // Inflate the layout for this fragment
         var co2 =view.findViewById<Button>(R.id.btnCo2)
         co2.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
+                 requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.flFragment,C02Estimation())
                 .addToBackStack(null)
                 .commit()
@@ -43,23 +45,40 @@ class Ai_Eco_Dashboard : Fragment() {
         scan.setOnClickListener {
             Fragmentset(Waste_Sortingfragment())
         }
-        view.findViewById<Button>(R.id.btnForecast).setOnClickListener{
-            db.collection("User").document(auth.currentUser?.uid.toString()).collection("Timedata").get()
-                .addOnSuccessListener { documents->
+        view.findViewById<Button>(R.id.btnForecast).setOnClickListener {
+            db.collection("User")
+                .document(auth.currentUser?.uid.toString())
+                .collection("Timedata")
+                .get()
+                .addOnSuccessListener { documents ->
+                    if (documents.size() >= 5) {
+                        val dates = mutableSetOf<String>()
 
-                    if( documents.size() >=5){
-                        Toast.makeText(requireActivity(),"Number of documents: ${documents.size()}",Toast.LENGTH_SHORT).show()
-                        Fragmentset(Prediction())
+                        for (document in documents) {
+                            val timestamp = document.getLong("timestamp")
+                            if (timestamp != null) {
+                                val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                    .format(Date(timestamp))
+                                dates.add(date)
+                            } else {
+                                Toast.makeText(requireActivity(), "Timestamp missing in document.", Toast.LENGTH_SHORT).show()
+                                return@addOnSuccessListener
+                            }
+                        }
 
+                        if (dates.size >= 2) {
+                            Fragmentset(Prediction())
+                        } else {
+                            Toast.makeText(requireActivity(), "Minimum 2 different dates are required.", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(requireActivity(), "Minimum 5 data points are required. You have ${documents.size()} data.", Toast.LENGTH_SHORT).show()
                     }
-                    else
-                    {
-                        Toast.makeText(requireActivity()," Minimum 5 data Required try differnt date data:you have ${documents.size()} data ",Toast.LENGTH_SHORT).show()
-                    }
-
                 }
-
         }
+
+
+
 
         return view
     }

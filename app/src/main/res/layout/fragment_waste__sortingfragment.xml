@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@drawable/gradient_background"
     tools:context=".AI_Eco_Dashboard.wastesorting.Waste_Sortingfragment">
 
     <ScrollView
@@ -23,7 +23,7 @@
             android:clipToPadding="false"
             android:paddingBottom="32dp"
             android:paddingTop="32dp"
-            android:backgroundTint="#FFFFFF">
+            android:backgroundTint="@color/background_gradient_start">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -73,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="Select or Capture Image"
                 android:paddingStart="24dp"
+                android:backgroundTint="@color/green_700"
                 android:paddingEnd="24dp"
                 android:textAllCaps="false" />
 
